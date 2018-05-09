@@ -33,7 +33,7 @@ public class SocieteController {
 		}if(soce.getSocieteId()!=null) {
 			societeMetierInterf.updateSociete(soce);
 		}else {
-			if(soce.getNomSociete()==""||soce.getAdresseSoceite()==||soce.getTelephoneSociete()==""||soce.)
+			return null;
 		}
 		model.addAttribute("societe", new Societe());
 		model.addAttribute("societelist", societeMetierInterf.listSociete());
