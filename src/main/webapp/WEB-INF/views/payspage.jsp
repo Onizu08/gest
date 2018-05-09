@@ -12,38 +12,29 @@
 	<div class="row">
 		<div class="col s12 l12">
 			<div class="row">
-				<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="pays"
+
+				<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="test"
 					action="savePays" method="post">
 					<legend>
 						<h4>Information Pays</h4>
 					</legend>
-					<div class="row">
+					<div class="row" id="1">
 						<div class="input-field col s12 m8 l2">
-							<f:input path="paysId" type="text" class="validate" />
+							<f:input path="id" type="text" class="validate" />
 							<label for="paysId">Pays Id:</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
-							<f:input path="paysLib" type="text" class="validate" />
+							<f:input path="lib" type="text" class="validate" />
 							<label for="paysLib">Pays Libelle :</label>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="1">
 						<div class="input-field col s12 m8 l2">
-							<f:input path="paysId" type="text" class="validate" />
+							<f:input path="id" type="text" class="validate" />
 							<label for="paysId">Pays Id:</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
-							<f:input path="paysLib" type="text" class="validate" />
-							<label for="paysLib">Pays Libelle :</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="input-field col s12 m8 l2">
-							<f:input path="paysId" type="text" class="validate" />
-							<label for="paysId">Pays Id:</label>
-						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:input path="paysLib" type="text" class="validate" />
+							<f:input path="lib" type="text" class="validate" />
 							<label for="paysLib">Pays Libelle :</label>
 						</div>
 					</div>

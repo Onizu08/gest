@@ -2,7 +2,9 @@ package mg.uha.miage.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +26,26 @@ public class Pays implements Serializable {
 	private String paysId;
 	@Column(name = "payslib", length = 30, nullable = false)
 	private String paysLib;
+
+	private Set<String> id = new HashSet<String>();
+	private Set<String> lib = new HashSet<String>();
+
+	public Set<String> getId() {
+		return id;
+	}
+
+	public void setId(Set<String> id) {
+		this.id = id;
+	}
+
+	public Set<String> getLib() {
+		return lib;
+	}
+
+	public void setLib(Set<String> lib) {
+		this.lib = lib;
+	}
+
 	@OneToMany(mappedBy = "pays", fetch = FetchType.LAZY)
 	private List<Ville> listVille = new ArrayList<Ville>();
 
