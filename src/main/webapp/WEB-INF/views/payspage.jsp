@@ -18,24 +18,16 @@
 					<legend>
 						<h4>Information Pays</h4>
 					</legend>
-					<div class="row" id="1">
-						<div class="input-field col s12 m8 l2">
-							<f:input path="id" type="text" class="validate" />
-							<label for="paysId">Pays Id:</label>
-						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:input path="lib" type="text" class="validate" />
-							<label for="paysLib">Pays Libelle :</label>
-						</div>
-					</div>
-					<div class="row" id="1">
-						<div class="input-field col s12 m8 l2">
-							<f:input path="id" type="text" class="validate" />
-							<label for="paysId">Pays Id:</label>
-						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:input path="lib" type="text" class="validate" />
-							<label for="paysLib">Pays Libelle :</label>
+					<div class="input_fields_wrap">
+						<div class="row" id="1">
+							<div class="input-field col s12 m8 l2">
+								<f:input path="paysId" type="text" class="validate" />
+								<label for="paysId">Pays Id:</label>
+							</div>
+							<div class="input-field col s12 m8 l5">
+								<f:input path="paysLib" type="text" class="validate" />
+								<label for="paysLib">Pays Libelle :</label>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -54,7 +46,11 @@
 							</div>
 						</div>
 					</div>
+
 				</f:form>
+				<div id="add_field_button">
+					<button>Ajouter</button>
+				</div>
 			</div>
 			<div class="row">
 				<f:form class="col s12 m12 l12 white">
@@ -91,4 +87,26 @@
 
 
 </body>
+<script type="text/javascript">
+$(document).ready(function() {
+    var max_fields      = 10; / 
+    var wrapper         = $(".input_fields_wrap"); 
+    var add_button      = $(".add_field_button");  
+    
+    var x = 1;  
+    $(add_button).click(function(e){  
+        e.preventDefault();
+        if(x < max_fields){ 
+            x++;  
+            $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>');  
+        }
+    });
+    
+    $(wrapper).on("click",".remove_field", function(e){ 
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+
+</script>
+
 </html>
