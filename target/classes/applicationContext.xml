@@ -50,6 +50,10 @@
 	<bean id="clientMetierInterf" class="mg.uha.miage.metier.impl.ClientMetierImpl">
 		<property name="clientDAO" ref="clientDAO"></property>
 	</bean>
-
+	<bean id="societeDAO" class="mg.uha.miage.dao.impl.SocieteDAOImpl">
+	</bean>
+	<bean id="societeMetierInterf" class="mg.uha.miage.metier.impl.SocieteMetierImpl">
+		<property name="societeDAO" ref="societeDAO"></property>
+	</bean>
 </beans>
  

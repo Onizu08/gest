@@ -4,15 +4,30 @@
 <html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body><%!String donne = ${valeur};%>
 	<div class="row">
 		<div class="col s12 l12">
 			<div class="row">
-
+				<%
+					if (donne == "modifier") {
+				%>
+				<p>diso</p>
+				<%
+					} else {
+				%>
+				<p>marina</p>
+				<%
+					out.print("valiny " + donne);
+				%>
+				<%
+					}
+				%>
+				<span>${valeur }</span>
 				<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="test"
 					action="savePays" method="post">
 					<legend>

@@ -20,7 +20,7 @@ public class Pays implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "paysid", length = 4, nullable = false)
+	@Column(name = "paysid", length = 10, nullable = false)
 	private String paysId;
 	@Column(name = "payslib", length = 30, nullable = false)
 	private String paysLib;

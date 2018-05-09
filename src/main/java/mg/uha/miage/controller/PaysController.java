@@ -23,6 +23,7 @@ public class PaysController {
 	public String index(Model model, HttpServletRequest httpServletRequest) {
 
 		model.addAttribute("test", new Pays());
+		model.addAttribute("valeur", "modifier");
 		model.addAttribute("payslist", paysMetierInterf.listPays());
 		return "payspage";
 	}
@@ -35,16 +36,31 @@ public class PaysController {
 			return "payspage";
 		}
 
-		if (pays.getPaysId() != "") {
+		if (pays.getPaysId() == "") {
 			paysMetierInterf.updatePays(pays);
 		} else {
-			if (pays.getPaysId() == "" || pays.getPaysLib() == "") {
-				model.addAttribute("error", "veuiller remplir les champs");
-			} else {
-				paysMetierInterf.addPays(pays);
+			Pays p;
 
+			String[] partsId = pays.getPaysId().split(",");
+			String[] partsLib = pays.getPaysLib().split(",");
+			for (int i = 0; i < partsId.length; i++) {
+				p = new Pays();
+				p.setPaysId(partsId[i]);
+				p.setPaysLib(partsLib[i]);
+				paysMetierInterf.addPays(p);
 			}
+
 		}
+		// if (pays.getPaysId() == "" || pays.getPaysLib() == "") {
+		// model.addAttribute("error", "veuiller remplir les champs");
+		// } else {
+		//
+		//
+		//
+		// // paysMetierInterf.addPays(pays);
+		//
+		// }
+		// }
 		model.addAttribute("Succes", "Pays ajout� avec succ�s");
 		model.addAttribute("test", new Pays());
 		model.addAttribute("payslist", paysMetierInterf.listPays());
@@ -53,8 +69,9 @@ public class PaysController {
 
 	@RequestMapping(value = "/editPays")
 	public String editPays(String paysId, Model model, HttpServletRequest httpServletRequest) {
-		Pays pays = paysMetierInterf.getPays(paysId);
-		model.addAttribute("test", pays);
+		Pays pays1 = paysMetierInterf.getPays(paysId);
+
+		model.addAttribute("test", pays1);
 		model.addAttribute("payslist", paysMetierInterf.listPays());
 		return "payspage";
 	}

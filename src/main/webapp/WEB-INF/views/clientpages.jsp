@@ -122,6 +122,7 @@
 										<th>Montant Avoir</th>
 										<th>Montant Du</th>
 										<th>Taux de remise</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<c:forEach items="${clientlist}" var="clientlist">
