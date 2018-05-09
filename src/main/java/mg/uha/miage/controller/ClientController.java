@@ -43,10 +43,17 @@ public class ClientController {
 			return "clientpages";
 		}
 		if (c.getClientId() == null) {
-			System.out.println("avant ajout" + c.getClientId());
-			clientMetierInterf.ajoutClient(c);
+			if (c.getClientNom() == "" || c.getClientPrenom() == "" || c.getDateNaissanceClient() == null
+					|| c.getAdresseClient() == "" || c.getClientTelephone() == "" || c.getMail() == ""
+					|| c.getClientType() == "" || c.getDateDebutClient() == null || c.getMonantDu() == null
+					|| c.getMontantAvoir() == null || c.getTauxRemise() == null) {
+
+				model.addAttribute("error", "veuiller remplir les champs");
+			} else {
+				clientMetierInterf.ajoutClient(c);
+			}
+
 		} else {
-			System.out.println("avant modification" + c.getClientId());
 			clientMetierInterf.updateClient(c);
 		}
 		model.addAttribute("client", new Client());

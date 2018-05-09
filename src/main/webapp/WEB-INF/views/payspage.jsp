@@ -48,9 +48,7 @@
 					</div>
 
 				</f:form>
-				<div id="add_field_button">
-					<button>Ajouter</button>
-				</div>
+				<span>${error}</span>
 			</div>
 			<div class="row">
 				<f:form class="col s12 m12 l12 white">

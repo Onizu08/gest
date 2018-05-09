@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import mg.uha.miage.entities.Pays;
 import mg.uha.miage.entities.Ville;
 import mg.uha.miage.metier.interf.PaysMetierInterf;
 import mg.uha.miage.metier.interf.VilleMetierInterf;
@@ -43,7 +42,11 @@ public class VilleCOntroller {
 		if (ville.getIdVille() != "") {
 			villeMetierInterf.updateVille(ville);
 		} else {
-			villeMetierInterf.ajoutVille(ville);
+			if (ville.getIdVille() == "" || ville.getLibVille() == "") {
+				model.addAttribute("error", "veuiller remplir les champs");
+			} else {
+				villeMetierInterf.ajoutVille(ville);
+			}
 		}
 		model.addAttribute("Succes", "Ville ajouté avec succès");
 		model.addAttribute("ville", new Ville());

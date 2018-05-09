@@ -24,7 +24,7 @@
 		</table>
 	</f:form>
 </div>
-
+<span>${error}</span>
 <div>
 	<table class="striped bordered highlight centered white" id="recherche">
 		<thead>

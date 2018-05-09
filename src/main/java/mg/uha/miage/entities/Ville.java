@@ -30,6 +30,8 @@ public class Ville implements Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ville")
 	private List<Client> listClient = new ArrayList<Client>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ville")
+	private List<Societe> listSociete = new ArrayList<Societe>();
 
 	@ManyToOne
 	@JoinColumn(name = "paysId")

@@ -38,8 +38,12 @@ public class PaysController {
 		if (pays.getPaysId() != "") {
 			paysMetierInterf.updatePays(pays);
 		} else {
+			if (pays.getPaysId() == "" || pays.getPaysLib() == "") {
+				model.addAttribute("error", "veuiller remplir les champs");
+			} else {
+				paysMetierInterf.addPays(pays);
 
-			paysMetierInterf.addPays(pays);
+			}
 		}
 		model.addAttribute("Succes", "Pays ajout� avec succ�s");
 		model.addAttribute("test", new Pays());
