@@ -28,7 +28,7 @@ public class PaysController {
 	}
 
 	@RequestMapping(value = "/savePays")
-	public String savePays(@Valid Pays pays, @Valid Pays pay2, Model model, BindingResult bindingResult,
+	public String savePays(@Valid Pays pays, Model model, BindingResult bindingResult,
 			HttpServletRequest httpServletRequest) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("payslist", paysMetierInterf.listPays());

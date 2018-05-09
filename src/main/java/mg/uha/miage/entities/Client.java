@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,11 +20,11 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name="clientid")
 	private Integer clientId;
-	@Column
+	@Column(name="nom")
 	private String clientNom;
-	@Column
+	@Column(name="prenom")
 	private String clientPrenom;
 	@Column(name = "datenaissance", nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -35,6 +36,17 @@ public class Client {
 	private String mail;
 	@Column(name = "type")
 	private String clientType;
+
+	@Transient
+	private String setDateNaisse;
+
+	public String getSetDateNaisse() {
+		return setDateNaisse;
+	}
+
+	public void setSetDateNaisse(String setDateNaisse) {
+		this.setDateNaisse = setDateNaisse;
+	}
 
 	public Integer getClientId() {
 		return clientId;
@@ -98,7 +110,7 @@ public class Client {
 	}
 
 	public Client(String clientNom, String clientPrenom, Date dateNaissanceClient, String clientTelephone, String mail,
-			String clientType) {
+			String clientType, String setDateNaisse) {
 		super();
 		this.clientNom = clientNom;
 		this.clientPrenom = clientPrenom;
@@ -106,6 +118,7 @@ public class Client {
 		this.clientTelephone = clientTelephone;
 		this.mail = mail;
 		this.clientType = clientType;
+		this.setDateNaisse = setDateNaisse;
 	}
 
 }

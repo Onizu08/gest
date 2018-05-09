@@ -32,7 +32,7 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
+
 	<context:annotation-config></context:annotation-config>
 
 	<bean id="paysDAO" class="mg.uha.miage.dao.impl.PaysDAOImpl"></bean>
@@ -44,5 +44,12 @@
 	<bean id="villeMetierInterf" class="mg.uha.miage.metier.impl.VilleMetierImpl">
 		<property name="villeDAO" ref="villeDAO"></property>
 	</bean>
+
+	<bean id="clientDAO" class="mg.uha.miage.dao.impl.ClientDAOImpl">
+	</bean>
+	<bean id="clientMetierInterf" class="mg.uha.miage.metier.impl.ClientMetierImpl">
+		<property name="clientDAO" ref="clientDAO"></property>
+	</bean>
+
 </beans>
  
