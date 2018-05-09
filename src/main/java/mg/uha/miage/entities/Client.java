@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,28 +22,55 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="clientid")
+	@Column(name = "clientid")
 	private Integer clientId;
-	@Column(name="nom")
+	@Column(name = "nom")
 	private String clientNom;
-	@Column(name="prenom")
+	@Column(name = "prenom")
 	private String clientPrenom;
 	@Column(name = "datenaissance", nullable = false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateNaissanceClient;
+	@Column(name = "adresse")
+	private String adresseClient;
 	@Column(name = "telephone")
 	private String clientTelephone;
 	@Column(name = "mail")
 	private String mail;
 	@Column(name = "type")
 	private String clientType;
+	@Column(name = "datedebutclient", nullable = false)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateDebutClient;
+	@Column(name = "montantavoir")
+	private Float montantAvoir;
+	@Column(name = "montantdu")
+	private Float monantDu;
+	@Column(name = "tauxremise")
+	private Float tauxRemise;
+
+	@ManyToOne
+	@JoinColumn(name = "idVille")
+	private Ville ville;
+
+	@Transient
+	private String setDateDebutClient;
 
 	@Transient
 	private String setDateNaisse;
 
 	public String getSetDateNaisse() {
 		return setDateNaisse;
+	}
+
+	public Ville getVille() {
+		return ville;
+	}
+
+	public void setVille(Ville ville) {
+		this.ville = ville;
 	}
 
 	public void setSetDateNaisse(String setDateNaisse) {
@@ -104,20 +133,76 @@ public class Client {
 		this.clientType = clientType;
 	}
 
+	public String getAdresseClient() {
+		return adresseClient;
+	}
+
+	public void setAdresseClient(String adresseClient) {
+		this.adresseClient = adresseClient;
+	}
+
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Client(String clientNom, String clientPrenom, Date dateNaissanceClient, String clientTelephone, String mail,
-			String clientType, String setDateNaisse) {
+	public Date getDateDebutClient() {
+		return dateDebutClient;
+	}
+
+	public void setDateDebutClient(Date dateDebutClient) {
+		this.dateDebutClient = dateDebutClient;
+	}
+
+	public Float getMontantAvoir() {
+		return montantAvoir;
+	}
+
+	public void setMontantAvoir(Float montantAvoir) {
+		this.montantAvoir = montantAvoir;
+	}
+
+	public Float getMonantDu() {
+		return monantDu;
+	}
+
+	public void setMonantDu(Float monantDu) {
+		this.monantDu = monantDu;
+	}
+
+	public Float getTauxRemise() {
+		return tauxRemise;
+	}
+
+	public void setTauxRemise(Float tauxRemise) {
+		this.tauxRemise = tauxRemise;
+	}
+
+	public String getSetDateDebutClient() {
+		return setDateDebutClient;
+	}
+
+	public void setSetDateDebutClient(String setDateDebutClient) {
+		this.setDateDebutClient = setDateDebutClient;
+	}
+
+	public Client(String clientNom, String clientPrenom, Date dateNaissanceClient, String adresseClient,
+			String clientTelephone, String mail, String clientType, Date dateDebutClient, Float montantAvoir,
+			Float monantDu, Float tauxRemise, Ville ville, String setDateDebutClient, String setDateNaisse) {
 		super();
 		this.clientNom = clientNom;
 		this.clientPrenom = clientPrenom;
 		this.dateNaissanceClient = dateNaissanceClient;
+		this.adresseClient = adresseClient;
 		this.clientTelephone = clientTelephone;
 		this.mail = mail;
 		this.clientType = clientType;
+		this.dateDebutClient = dateDebutClient;
+		this.montantAvoir = montantAvoir;
+		this.monantDu = monantDu;
+		this.tauxRemise = tauxRemise;
+		this.ville = ville;
+		this.setDateDebutClient = setDateDebutClient;
 		this.setDateNaisse = setDateNaisse;
 	}
 
