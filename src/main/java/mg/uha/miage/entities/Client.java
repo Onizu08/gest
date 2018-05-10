@@ -1,14 +1,18 @@
 package mg.uha.miage.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,6 +54,9 @@ public class Client {
 	private Float monantDu;
 	@Column(name = "tauxremise")
 	private Float tauxRemise;
+
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<Payer> listPayement = new ArrayList<Payer>();
 
 	@ManyToOne
 	@JoinColumn(name = "idVille")
@@ -152,6 +159,14 @@ public class Client {
 
 	public void setDateDebutClient(Date dateDebutClient) {
 		this.dateDebutClient = dateDebutClient;
+	}
+
+	public List<Payer> getListPayement() {
+		return listPayement;
+	}
+
+	public void setListPayement(List<Payer> listPayement) {
+		this.listPayement = listPayement;
 	}
 
 	public Float getMontantAvoir() {

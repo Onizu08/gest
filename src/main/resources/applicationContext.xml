@@ -55,5 +55,10 @@
 	<bean id="societeMetierInterf" class="mg.uha.miage.metier.impl.SocieteMetierImpl">
 		<property name="societeDAO" ref="societeDAO"></property>
 	</bean>
+	<bean id="factureDAO" class="mg.uha.miage.dao.impl.FactureDAOImpl">
+	</bean>
+	<bean id="factureMetierInterf" class="mg.uha.miage.metier.impl.FactureMetierImpl">
+		<property name="factureDAO" ref="factureDAO"></property>
+	</bean>
 </beans>
  
