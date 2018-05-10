@@ -15,7 +15,7 @@
 			<div class="row">
 
 				<f:form class="col s12 m8 l5 offset-l4 white"
-					modelAttribute="client" action="saveFacture" method="post">
+					modelAttribute="facture" action="saveFacture" method="post">
 					<legend>
 						<h4>Information Facture</h4>
 					</legend>
@@ -103,21 +103,21 @@
 										<th>Action</th>
 									</tr>
 								</thead>
-								<c:forEach items="${societelist}" var="societelist">
+								<c:forEach items="${facturelist}" var="facturelist">
 									<tr>
-										<td>${societelist.societeId}</td>
-										<td>${societelist.nomSociete}</td>
-										<td>${societelist.adresseSoceite}</td>
-										<td>${societelist.telephoneSociete}</td>
-										<td>${societelist.fax}</td>
-										<td>${societelist.siret}</td>
-										<td>${societelist.capital}</td>
-										<td>${societelist.numTva}</td>
-										<td>${societelist.naf}</td>
+										<td>${facturelist.factureId}</td>
+										<td>${facturelist.dateFacture}</td>
+										<td>${facturelist.typeFacture}</td>
+										<td>${facturelist.telephoneSociete}</td>
+										<td>${facturelist.fax}</td>
+										<td>${facturelist.siret}</td>
+										<td>${facturelist.capital}</td>
+										<td>${facturelist.numTva}</td>
+										<td>${facturelist.naf}</td>
 										<td><a
-											href="editSociete?societeId=${societelist.societeId}">Modification</a></td>
+											href="editFacture?factureId=${facturelist.factureId}">Modification</a></td>
 										<td><a
-											href="deleteSociete?societeId=${societelist.societeId}">Supprimer</a></td>
+											href="deleteFacture?factureId=${societelist.factureId}">Supprimer</a></td>
 									</tr>
 								</c:forEach>
 							</table>
