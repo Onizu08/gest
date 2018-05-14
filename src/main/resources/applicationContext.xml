@@ -60,5 +60,11 @@
 	<bean id="factureMetierInterf" class="mg.uha.miage.metier.impl.FactureMetierImpl">
 		<property name="factureDAO" ref="factureDAO"></property>
 	</bean>
+	<bean id="payerDAO" class="mg.uha.miage.dao.impl.PayementDAOImpl">
+	</bean>
+	<bean id="payementMetierInterf" class="mg.uha.miage.metier.impl.PayementMetierImpl">
+		<property name="payerDAO" ref="payerDAO"></property>
+	</bean>
+
 </beans>
  

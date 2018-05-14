@@ -65,7 +65,6 @@ public class ClientController {
 	@RequestMapping(value = "/editClient")
 	public String editClient(Integer clientId, Model model) {
 		Client client = clientMetierInterf.getClient(clientId);
-		System.out.println("num client" + client.getClientId());
 		model.addAttribute("client", client);
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
