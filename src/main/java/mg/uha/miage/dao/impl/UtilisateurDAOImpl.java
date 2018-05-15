@@ -8,46 +8,44 @@ import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import mg.uha.miage.dao.interf.SocieteDAOInterf;
-import mg.uha.miage.entities.Societe;
+import mg.uha.miage.dao.interf.UtilisateurDAOInterf;
+import mg.uha.miage.entities.Utilisateur;
 
 @Transactional
-public class SocieteDAOImpl implements SocieteDAOInterf {
-
+public class UtilisateurDAOImpl implements UtilisateurDAOInterf {
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	public Integer ajoutSociete(Societe s) {
+	public Integer addUser(Utilisateur p) {
 		// TODO Auto-generated method stub
-		em.persist(s);
-		return s.getSocieteId();
+		em.persist(p);
+		return p.getUtilisateurId();
 	}
 
 	@Override
-	public void updateSociete(Societe s) {
+	public void udpateUser(Utilisateur p) {
 		// TODO Auto-generated method stub
-		em.merge(s);
+		em.merge(p);
 	}
 
 	@Override
-	public void deleteSociete(Integer idS) {
+	public void deleteUser(Integer idP) {
 		// TODO Auto-generated method stub
-		Societe s = getSociete(idS);
-		em.remove(s);
+		Utilisateur u = getUser(idP);
+		em.remove(u);
 	}
 
 	@Override
-	public List<Societe> listSociete() {
+	public List<Utilisateur> listUser() {
 		// TODO Auto-generated method stub
-		Query req = em.createQuery("select s from Societe s");
+		Query req = em.createQuery("select u from Utilisateur u");
 		return req.getResultList();
 	}
 
 	@Override
-	public Societe getSociete(Integer idS) {
+	public Utilisateur getUser(Integer idP) {
 		// TODO Auto-generated method stub
-		return em.find(Societe.class, idS);
+		return em.find(Utilisateur.class, idP);
 	}
-
 }
