@@ -8,46 +8,45 @@ import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import mg.uha.miage.dao.interf.SocieteDAOInterf;
-import mg.uha.miage.entities.Societe;
+import mg.uha.miage.dao.interf.ProfilDAOInterf;
+import mg.uha.miage.entities.Profil;
 
 @Transactional
-public class SocieteDAOImpl implements SocieteDAOInterf {
+public class ProfilDAOImpl implements ProfilDAOInterf {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	public Integer ajoutSociete(Societe s) {
+	public Integer addProfil(Profil p) {
 		// TODO Auto-generated method stub
-		em.persist(s);
-		return s.getSocieteId();
+		em.persist(p);
+		return p.getProfileId();
 	}
 
 	@Override
-	public void updateSociete(Societe s) {
+	public void udpateProfil(Profil p) {
 		// TODO Auto-generated method stub
-		em.merge(s);
+		em.merge(p);
 	}
 
 	@Override
-	public void deleteSociete(Integer idS) {
+	public void deleteProfil(Integer idP) {
 		// TODO Auto-generated method stub
-		Societe s = getSociete(idS);
-		em.remove(s);
+
 	}
 
 	@Override
-	public List<Societe> listSociete() {
+	public List<Profil> listProfil() {
 		// TODO Auto-generated method stub
-		Query req = em.createQuery("select s from Societe s");
+		Query req = em.createQuery("select p from Profil p");
 		return req.getResultList();
 	}
 
 	@Override
-	public Societe getSociete(Integer idS) {
+	public Profil getProfil(Integer idP) {
 		// TODO Auto-generated method stub
-		return em.find(Societe.class, idS);
+		return em.find(Profil.class, idP);
 	}
 
 }

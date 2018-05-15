@@ -58,9 +58,19 @@ public class Client {
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Payer> listPayement = new ArrayList<Payer>();
 
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<Facture> listFacture = new ArrayList<Facture>();
+
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<Commande> listCommande = new ArrayList<Commande>();
+
 	@ManyToOne
 	@JoinColumn(name = "idVille")
 	private Ville ville;
+	
+	@ManyToOne
+	@JoinColumn(name = "societeId")
+	private Societe societe;
 
 	@Transient
 	private String setDateDebutClient;
@@ -76,8 +86,24 @@ public class Client {
 		return ville;
 	}
 
+	public List<Facture> getListFacture() {
+		return listFacture;
+	}
+
+	public void setListFacture(List<Facture> listFacture) {
+		this.listFacture = listFacture;
+	}
+
 	public void setVille(Ville ville) {
 		this.ville = ville;
+	}
+
+	public Societe getSociete() {
+		return societe;
+	}
+
+	public void setSociete(Societe societe) {
+		this.societe = societe;
 	}
 
 	public void setSetDateNaisse(String setDateNaisse) {
@@ -110,6 +136,14 @@ public class Client {
 
 	public Date getDateNaissanceClient() {
 		return dateNaissanceClient;
+	}
+
+	public List<Commande> getListCommande() {
+		return listCommande;
+	}
+
+	public void setListCommande(List<Commande> listCommande) {
+		this.listCommande = listCommande;
 	}
 
 	public void setDateNaissanceClient(Date dateNaissanceClient) {
