@@ -66,5 +66,17 @@
 		<property name="payerDAO" ref="payerDAO"></property>
 	</bean>
 
+	<bean id="profilDAO" class="mg.uha.miage.dao.impl.ProfilDAOImpl">
+	</bean>
+	<bean id="profilMetierInterf" class="mg.uha.miage.metier.impl.ProfilMetierImpl">
+		<property name="profilDAO" ref="profilDAO"></property>
+	</bean>
+
+	<bean id="utilisateurDAO" class="mg.uha.miage.dao.impl.UtilisateurDAOImpl">
+	</bean>
+	<bean id="utilisateurMetierInterf" class="mg.uha.miage.metier.impl.UtilisateurMetierImpl">
+		<property name="utilisateurDAO" ref="utilisateurDAO"></property>
+	</bean>
+
 </beans>
  

@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,6 +25,35 @@ public class Facture {
 	@Id
 	@Column(name = "factureid")
 	private Integer factureId;
+
+	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
+	private List<Payer> listPayer = new ArrayList<Payer>();
+
+	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
+	private List<Achat> listAchat = new ArrayList<Achat>();
+
+	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
+	private List<Facture> listFacture = new ArrayList<Facture>();
+
+	@ManyToOne
+	@JoinColumn(name = "factureIdAnnule")
+	private Facture facture;
+
+	@ManyToOne
+	@JoinColumn(name = "utilisateurId")
+	private Utilisateur utilisateur;
+
+	@ManyToOne
+	@JoinColumn(name = "deviseId")
+	private Devise devise;
+
+	@ManyToOne
+	@JoinColumn(name = "clientId")
+	private Client client;
+
+	@Column(name = "factureidannule")
+	private Integer factureIdAnnule;
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "datefacture")
@@ -43,14 +74,12 @@ public class Facture {
 	private Float fraisFacture;
 	@Column(name = "nbrvalidite")
 	private Integer nbrValidite;
-
+	@Column(name = "remise")
+	private Float remise;
 	@Transient
 	private String setDateFacture;
 	@Transient
 	private String setDateEcheance;
-
-	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
-	private List<Payer> listPayer = new ArrayList<Payer>();
 
 	public Facture() {
 		super();
@@ -65,12 +94,36 @@ public class Facture {
 		this.factureId = factureId;
 	}
 
+	public Float getRemise() {
+		return remise;
+	}
+
+	public void setRemise(Float remise) {
+		this.remise = remise;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	public Date getDateFacture() {
 		return dateFacture;
 	}
 
 	public void setDateFacture(Date dateFacture) {
 		this.dateFacture = dateFacture;
+	}
+
+	public List<Achat> getListAchat() {
+		return listAchat;
+	}
+
+	public void setListAchat(List<Achat> listAchat) {
+		this.listAchat = listAchat;
 	}
 
 	public String getTypeFacture() {
@@ -154,7 +207,7 @@ public class Facture {
 	}
 
 	public Facture(Date dateFacture, String typeFacture, Float montantFacture, String statut, Date dateEcheance,
-			Integer nbrPaiement, Float fraisFacture, Integer nbrValidite, String setDateFacture,
+			Integer nbrPaiement, Float fraisFacture, Integer nbrValidite, Float remise, String setDateFacture,
 			String setDateEcheance) {
 		super();
 		this.dateFacture = dateFacture;
@@ -165,6 +218,7 @@ public class Facture {
 		this.nbrPaiement = nbrPaiement;
 		this.fraisFacture = fraisFacture;
 		this.nbrValidite = nbrValidite;
+		this.remise = remise;
 		this.setDateFacture = setDateFacture;
 		this.setDateEcheance = setDateEcheance;
 	}
