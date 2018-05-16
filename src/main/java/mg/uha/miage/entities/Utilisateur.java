@@ -55,8 +55,6 @@ public class Utilisateur {
 		this.listFacture = listFacture;
 	}
 
-	 
-
 	public Profil getProfil() {
 		return profil;
 	}

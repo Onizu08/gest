@@ -10,14 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${valeur} "==" modifie}>
-		<c:out value="vrai"></c:out>
-	</c:if>
-	<c:if test="{valeur!=modifier}">
-		<c:out value="tsy izy">
-		</c:out>
-	</c:if>
-	<span>${valeur }</span>
+
 	<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="test"
 		action="savePays" method="post">
 		<legend>

@@ -78,5 +78,17 @@
 		<property name="utilisateurDAO" ref="utilisateurDAO"></property>
 	</bean>
 
+	<bean id="commandeDAO" class="mg.uha.miage.dao.impl.CommandeDAOImpl">
+	</bean>
+	<bean id="commandeMetierInterf" class="mg.uha.miage.metier.impl.CommandeMetierImpl">
+		<property name="commandeDAO" ref="commandeDAO"></property>
+	</bean>
+
+	<bean id="deviseDAO" class="mg.uha.miage.dao.impl.DeviseDAOImpl">
+	</bean>
+	<bean id="deviseMetierInterf" class="mg.uha.miage.metier.impl.DeviseMetierImpl">
+		<property name="deviseDAO" ref="deviseDAO"></property>
+	</bean>
+
 </beans>
  

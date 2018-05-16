@@ -122,6 +122,46 @@ public class Facture {
 		return listAchat;
 	}
 
+	public List<Facture> getListFacture() {
+		return listFacture;
+	}
+
+	public void setListFacture(List<Facture> listFacture) {
+		this.listFacture = listFacture;
+	}
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Devise getDevise() {
+		return devise;
+	}
+
+	public void setDevise(Devise devise) {
+		this.devise = devise;
+	}
+
+	public Integer getFactureIdAnnule() {
+		return factureIdAnnule;
+	}
+
+	public void setFactureIdAnnule(Integer factureIdAnnule) {
+		this.factureIdAnnule = factureIdAnnule;
+	}
+
 	public void setListAchat(List<Achat> listAchat) {
 		this.listAchat = listAchat;
 	}
