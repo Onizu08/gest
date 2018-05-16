@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import mg.uha.miage.entities.Facture;
 import mg.uha.miage.metier.interf.ClientMetierInterf;
+import mg.uha.miage.metier.interf.DeviseMetierInterf;
 import mg.uha.miage.metier.interf.FactureMetierInterf;
+import mg.uha.miage.metier.interf.UtilisateurMetierInterf;
 
 @Controller
 @RequestMapping(value = "/Facture")
@@ -21,11 +23,19 @@ public class FactureController {
 	@Autowired
 	private FactureMetierInterf factureMetierInterf;
 
+	@Autowired
+	private DeviseMetierInterf deviseMetierInterf;
+
+	@Autowired
+	private UtilisateurMetierInterf utilisateurMetierInterf;
+
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
 		model.addAttribute("facture", new Facture());
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
+		model.addAttribute("deviselist", deviseMetierInterf.listDevise());
+		model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 		return "facturepage";
 	}
 
@@ -34,6 +44,8 @@ public class FactureController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("facturelist", factureMetierInterf.listFacture());
 			model.addAttribute("clientlist", clientMetierInterf.listClient());
+			model.addAttribute("deviselist", deviseMetierInterf.listDevise());
+			model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 			return "facturepage";
 		}
 		if (fac.getFactureId() != null) {
@@ -50,6 +62,8 @@ public class FactureController {
 		model.addAttribute("facture", new Facture());
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
+		model.addAttribute("deviselist", deviseMetierInterf.listDevise());
+		model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 		return "facturepage";
 	}
 
@@ -57,9 +71,10 @@ public class FactureController {
 	public String editFacture(Integer factureId, Model model) {
 		Facture f = factureMetierInterf.getFactureId(factureId);
 		model.addAttribute("facture", f);
-
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
+		model.addAttribute("deviselist", deviseMetierInterf.listDevise());
+		model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 		return "facturepage";
 	}
 
@@ -69,6 +84,8 @@ public class FactureController {
 		model.addAttribute("facture", new Facture());
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
+		model.addAttribute("deviselist", deviseMetierInterf.listDevise());
+		model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 		return "facturepage";
 	}
 }

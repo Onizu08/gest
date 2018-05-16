@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,31 +11,24 @@
 </head>
 <body>
 
-	<f:form class="col s12 m8 l5 offset-l4 white"
-		modelAttribute="utilisateur" action="saveUtilisateur" method="post">
+	<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="devise"
+		action="saveDevise" method="post">
 		<legend>
-			<h4>Information Utilisateur</h4>
+			<h4>Information Devise</h4>
 		</legend>
 		<div class="input_fields_wrap">
 			<div class="row" id="1">
 				<div class="input-field col s12 m8 l2">
-					<label for="utilisateurId">Utilisateur Id:</label>
-					<f:input path="utilisateurId" type="text" class="validate"
-						readonly="true" />
-				</div>
-				<div>
-					<f:select path="profil.profileId" items="${profilelist}"
-						itemValue="profileId" itemLabel="profileLib"></f:select>
-					<label for="profileId">Profile</label>
-				</div>
-
-				<div class="input-field col s12 m8 l5">
-					<f:input path="login" type="text" class="validate" />
-					<label for="login">Login :</label>
+					<f:input path="deviseId" type="text" class="validate" />
+					<label for="deviseId">Devise Id:</label>
 				</div>
 				<div class="input-field col s12 m8 l5">
-					<f:input path="pwd" type="password" class="validate" />
-					<label for="pwd">Password :</label>
+					<f:input path="deviseLibelle" type="text" class="validate" />
+					<label for="deviseLibelle">Devise Libelle :</label>
+				</div>
+				<div class="input-field col s12 m8 l5">
+					<f:input path="tauxDevise" type="text" class="validate" />
+					<label for="tauxDevise">Devise Taux :</label>
 				</div>
 			</div>
 		</div>
@@ -63,7 +55,7 @@
 	<div class="row">
 		<f:form class="col s12 m12 l12 white">
 			<legend>
-				<h5>Liste des Utilisateurs</h5>
+				<h5>Liste des Pays</h5>
 			</legend>
 			<div class="col s12 l12">
 				<div>
@@ -71,23 +63,19 @@
 						id="recherche">
 						<thead>
 							<tr>
-								<th>ID User</th>
-								<th>ID Profile</th>
-								<th>Login</th>
-								<th>Password</th>
+								<th>ID Devise</th>
+								<th>LIB Devise</th>
+								<th>Taux Devise</th>
 								<th>Action</th>
 							</tr>
 						</thead>
-						<c:forEach items="${utilisateurlist}" var="utilisateurlist">
+						<c:forEach items="${deviselist}" var="deviselist">
 							<tr>
-								<td>${utilisateurlist.utilisateurId}</td>
-								<td>${utilisateurlist.profil.profileId}</td>
-								<td>${utilisateurlist.login}</td>
-								<td>${utilisateurlist.pwd}</td>
-								<td><a
-									href="editUtilisateur?utilisateurId=${utilisateurlist.utilisateurId}">Modification</a></td>
-								<td><a
-									href="deleteUtilisateur?utilisateurId=${utilisateurlist.utilisateurId}">Supprimer</a></td>
+								<td>${deviselist.deviseId}</td>
+								<td>${deviselist.deviseLibelle}</td>
+								<td>${deviselist.tauxDevise}</td>
+								<td><a href="editDevise?deviseId=${deviselist.deviseId}">Modification</a></td>
+								<td><a href="deleteDevise?deviseId=${deviselist.deviseId}">Supprimer</a></td>
 							</tr>
 						</c:forEach>
 					</table>

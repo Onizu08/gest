@@ -26,6 +26,22 @@
 									readonly="true" />
 								<label for="factureId">Id Facture:</label>
 							</div>
+							<div>
+								<f:select path="client.clientId" items="${clientlist}"
+									itemValue="clientId" itemLabel="clientNom"></f:select>
+								<label for="clientId">Pays Id</label>
+							</div>
+							<div>
+								<f:select path="devise.deviseId" items="${deviselist}"
+									itemValue="deviseId" itemLabel="deviseId"></f:select>
+								<label for="deviseId">Pays Id</label>
+							</div>
+							<div>
+								<f:select path="utilisateur.utilisateurId"
+									items="${utilisateurlist}" itemValue="utilisateurId"
+									itemLabel="login"></f:select>
+								<label for="paysId">Pays Id</label>
+							</div>
 							<div class="input-field col s12 m8 l2">
 								<f:input path="dateFacture" type="text" class="validate" />
 								<label for="nomSociete">Date Facture:</label>
