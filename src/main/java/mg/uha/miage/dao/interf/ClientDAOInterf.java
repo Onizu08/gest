@@ -16,4 +16,11 @@ public interface ClientDAOInterf {
 
 	public Client getClient(Integer idC);
 
+	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
+			Integer valPost, String valVille, String valPays);
+
+	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
+			String valPhone, String valPhoneSoc, String valFax, String valAdresse, String valVille, String valPays,
+			Integer valPostale);
+
 }

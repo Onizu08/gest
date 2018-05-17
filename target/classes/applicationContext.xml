@@ -90,5 +90,21 @@
 		<property name="deviseDAO" ref="deviseDAO"></property>
 	</bean>
 
+	<bean id="articleDAO" class="mg.uha.miage.dao.impl.ArticleDAOImpl">
+	</bean>
+	<bean id="articleMetierInterf" class="mg.uha.miage.metier.impl.ArticleMetierImpl">
+		<property name="articleDAO" ref="articleDAO"></property>
+	</bean>
+	<bean id="categorieDAO" class="mg.uha.miage.dao.impl.CategorieDAOImpl">
+	</bean>
+	<bean id="categorieMetierInterf" class="mg.uha.miage.metier.impl.CategorieMetierImpl">
+		<property name="categorieDAO" ref="categorieDAO"></property>
+	</bean>
+	<bean id="reductionDAO" class="mg.uha.miage.dao.impl.ReductionDAOImpl">
+	</bean>
+	<bean id="reductionMetierInterf" class="mg.uha.miage.metier.impl.ReductionMetierImpl">
+		<property name="reductionDAO" ref="reductionDAO"></property>
+	</bean>
+
 </beans>
  

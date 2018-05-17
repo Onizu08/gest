@@ -12,13 +12,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+@NamedStoredProcedureQueries({
+		@NamedStoredProcedureQuery(name = "AJOUTCLIENT", procedureName = "AJOUTCLIENT", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOM"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPRENOM"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALEMAIL"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS") }),
+		@NamedStoredProcedureQuery(name = "AJOUTSOCIETE", procedureName = "AJOUTSOCIETE", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOMSOCIETE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALSIRET"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOM"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPRENOM"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALMAIL"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPHONESOC"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALFAX"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE") }) })
 
 @Entity
 @Table(name = "client")
@@ -42,6 +70,8 @@ public class Client {
 	private String clientTelephone;
 	@Column(name = "mail")
 	private String mail;
+	@Column(name = "postale")
+	private Integer postale;
 	@Column(name = "type")
 	private String clientType;
 	@Column(name = "datedebutclient", nullable = false)
@@ -54,6 +84,8 @@ public class Client {
 	private Float monantDu;
 	@Column(name = "tauxremise")
 	private Float tauxRemise;
+	@Column(name = "pays")
+	private String pays;
 
 	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
 	private List<Payer> listPayement = new ArrayList<Payer>();
@@ -67,7 +99,7 @@ public class Client {
 	@ManyToOne
 	@JoinColumn(name = "idVille")
 	private Ville ville;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "societeId")
 	private Societe societe;
@@ -77,6 +109,15 @@ public class Client {
 
 	@Transient
 	private String setDateNaisse;
+
+	@Transient
+	private String nomSociete;
+	@Transient
+	private Integer siret;
+	@Transient
+	private String telephonSocie;
+	@Transient
+	private String fax;
 
 	public String getSetDateNaisse() {
 		return setDateNaisse;
@@ -106,8 +147,56 @@ public class Client {
 		this.societe = societe;
 	}
 
+	public Integer getPostale() {
+		return postale;
+	}
+
+	public void setPostale(Integer postale) {
+		this.postale = postale;
+	}
+
+	public String getNomSociete() {
+		return nomSociete;
+	}
+
+	public void setNomSociete(String nomSociete) {
+		this.nomSociete = nomSociete;
+	}
+
+	public Integer getSiret() {
+		return siret;
+	}
+
+	public void setSiret(Integer siret) {
+		this.siret = siret;
+	}
+
+	public String getTelephonSocie() {
+		return telephonSocie;
+	}
+
+	public void setTelephonSocie(String telephonSocie) {
+		this.telephonSocie = telephonSocie;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
 	public void setSetDateNaisse(String setDateNaisse) {
 		this.setDateNaisse = setDateNaisse;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 
 	public Integer getClientId() {
@@ -236,8 +325,9 @@ public class Client {
 	}
 
 	public Client(String clientNom, String clientPrenom, Date dateNaissanceClient, String adresseClient,
-			String clientTelephone, String mail, String clientType, Date dateDebutClient, Float montantAvoir,
-			Float monantDu, Float tauxRemise, Ville ville, String setDateDebutClient, String setDateNaisse) {
+			String clientTelephone, String mail, Integer postale, String clientType, Date dateDebutClient,
+			Float montantAvoir, Float monantDu, Float tauxRemise, String pays, String setDateDebutClient,
+			String setDateNaisse, String nomSociete, Integer siret, String telephonSocie, String fax) {
 		super();
 		this.clientNom = clientNom;
 		this.clientPrenom = clientPrenom;
@@ -245,14 +335,19 @@ public class Client {
 		this.adresseClient = adresseClient;
 		this.clientTelephone = clientTelephone;
 		this.mail = mail;
+		this.postale = postale;
 		this.clientType = clientType;
 		this.dateDebutClient = dateDebutClient;
 		this.montantAvoir = montantAvoir;
 		this.monantDu = monantDu;
 		this.tauxRemise = tauxRemise;
-		this.ville = ville;
+		this.pays = pays;
 		this.setDateDebutClient = setDateDebutClient;
 		this.setDateNaisse = setDateNaisse;
+		this.nomSociete = nomSociete;
+		this.siret = siret;
+		this.telephonSocie = telephonSocie;
+		this.fax = fax;
 	}
 
 }

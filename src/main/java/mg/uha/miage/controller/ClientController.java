@@ -42,20 +42,55 @@ public class ClientController {
 			model.addAttribute("villelist", villemetierInterf.listVille());
 			return "clientpages";
 		}
-		if (c.getClientId() == null) {
-			if (c.getClientNom() == "" || c.getClientPrenom() == "" || c.getDateNaissanceClient() == null
-					|| c.getAdresseClient() == "" || c.getClientTelephone() == "" || c.getMail() == ""
-					|| c.getClientType() == "" || c.getDateDebutClient() == null || c.getMonantDu() == null
-					|| c.getMontantAvoir() == null || c.getTauxRemise() == null) {
 
-				model.addAttribute("error", "veuiller remplir les champs");
-			} else {
-				clientMetierInterf.ajoutClient(c);
-			}
+		/// ajout avec procedure
 
+		// clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(),
+		// c.getMail(), c.getClientTelephone(),
+		// c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille(),
+		// c.getPays());
+
+		// System.out.println("ajout réussi");
+
+		// fin ajout avec procedure
+
+		Client v = new Client();
+		String pa = "Particulier";
+		v.setClientType(pa);
+		System.out.println("maka valeur" + c.getClientType());
+		System.out.println("valeur apres modification " + v.getClientType());
+
+		if (c.getClientType().toString().equals(v.getClientType().toString())) {
+			System.out.println("1");
+			System.out.println("valeur " + v.getClientType());
+			clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(), c.getMail(), c.getClientTelephone(),
+					c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille(), c.getPays());
 		} else {
-			clientMetierInterf.updateClient(c);
+			System.out.println("2" + v.getClientType());
+			System.out.println("tsy mosu");
+
+			clientMetierInterf.addSocieteC(c.getNomSociete(), c.getSiret(), c.getClientNom(), c.getClientPrenom(),
+					c.getMail(), c.getClientTelephone(), c.getTelephonSocie(), c.getFax(), c.getAdresseClient(),
+					c.getVille().getIdVille(), c.getPays(), c.getPostale());
+
 		}
+		// if (c.getClientId() == null) {
+		// if (c.getClientNom() == "" || c.getClientPrenom() == "" ||
+		// c.getDateNaissanceClient() == null
+		// || c.getAdresseClient() == "" || c.getClientTelephone() == "" || c.getMail()
+		// == ""
+		// || c.getClientType() == "" || c.getDateDebutClient() == null ||
+		// c.getMonantDu() == null
+		// || c.getMontantAvoir() == null || c.getTauxRemise() == null) {
+		//
+		// model.addAttribute("error", "veuiller remplir les champs");
+		// } else {
+		// clientMetierInterf.ajoutClient(c);
+		// }
+		//
+		// } else {
+		// clientMetierInterf.updateClient(c);
+		// }
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());

@@ -22,6 +22,7 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "articleid")
 	private Integer articleId;
+	
 
 	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
 	private List<Achat> listAchat = new ArrayList<Achat>();

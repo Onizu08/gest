@@ -19,7 +19,7 @@
 		<div class="input_fields_wrap">
 			<div class="row" id="1">
 				<div class="input-field col s12 m8 l2">
-					<f:input path="deviseId" type="text" class="validate" />
+					<f:input path="deviseId" type="text" class="validate"  />
 					<label for="deviseId">Devise Id:</label>
 				</div>
 				<div class="input-field col s12 m8 l5">
@@ -55,7 +55,7 @@
 	<div class="row">
 		<f:form class="col s12 m12 l12 white">
 			<legend>
-				<h5>Liste des Pays</h5>
+				<h5>Liste des Devises</h5>
 			</legend>
 			<div class="col s12 l12">
 				<div>

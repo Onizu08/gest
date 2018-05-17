@@ -47,4 +47,20 @@ public class ClientMetierImpl implements ClientMetierInterf {
 		return clientDAO.getClient(idC);
 	}
 
+	@Override
+	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
+			Integer valPost, String valVille, String valPays) {
+		// TODO Auto-generated method stub
+		clientDAO.addClientP(valNom, valPrenom, valMail, valPhone, valAdresse, valPost, valVille, valPays);
+	}
+
+	@Override
+	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
+			String valPhone, String valPhoneSoc, String valFax, String valAdresse, String valVille, String valPays,
+			Integer valPostale) {
+		// TODO Auto-generated method stub
+		clientDAO.addSocieteC(valNomSoc, valSiret, valNom, valPrenom, valMail, valPhone, valPhoneSoc, valFax,
+				valAdresse, valVille, valPays, valPostale);
+	}
+
 }
