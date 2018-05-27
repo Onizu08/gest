@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import mg.uha.miage.entities.Client;
 import mg.uha.miage.metier.interf.ClientMetierInterf;
+import mg.uha.miage.metier.interf.PaysMetierInterf;
 import mg.uha.miage.metier.interf.VilleMetierInterf;
 
 @Controller
@@ -26,13 +27,19 @@ public class ClientController {
 	@Autowired
 	private VilleMetierInterf villemetierInterf;
 
+	@Autowired
+	private PaysMetierInterf paysMetierInterf;
+
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
+		model.addAttribute("payslist", paysMetierInterf.listPays());
+		// return "clientpages";
 
-		return "clientpages";
+		return "exemplePage";
+
 	}
 
 	@RequestMapping(value = "/saveClient")
@@ -40,61 +47,44 @@ public class ClientController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("clientlist", clientMetierInterf.listClient());
 			model.addAttribute("villelist", villemetierInterf.listVille());
-			return "clientpages";
+			model.addAttribute("payslist", paysMetierInterf.listPays());
+			return "exemplePage";
 		}
-
-		/// ajout avec procedure
-
-		// clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(),
-		// c.getMail(), c.getClientTelephone(),
-		// c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille(),
-		// c.getPays());
-
-		// System.out.println("ajout réussi");
-
-		// fin ajout avec procedure
 
 		Client v = new Client();
 		String pa = "Particulier";
 		v.setClientType(pa);
 		System.out.println("maka valeur" + c.getClientType());
 		System.out.println("valeur apres modification " + v.getClientType());
+		// anao ajout
+		if (c.getClientId() == null) {
 
-		if (c.getClientType().toString().equals(v.getClientType().toString())) {
-			System.out.println("1");
-			System.out.println("valeur " + v.getClientType());
-			clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(), c.getMail(), c.getClientTelephone(),
-					c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille(), c.getPays());
+			if (c.getClientType().toString().equals(v.getClientType().toString())) {
+				System.out.println("valeur particulier");
+
+				clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(), c.getMail(),
+						c.getClientTelephone(), c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille(),
+						c.getPays());
+
+			} else {
+
+				System.out.println("valuer postale" + c.getPostale());
+
+				clientMetierInterf.addSocieteC(c.getNomSociete(), c.getSiret(), c.getClientNom(), c.getClientPrenom(),
+						c.getMail(), c.getClientTelephone(), c.getTelephonSocie(), c.getAdresseClient(),
+						c.getVille().getIdVille(), c.getPays(), c.getPostale());
+
+				System.out.println("Ajout effectué Societe");
+			}
 		} else {
-			System.out.println("2" + v.getClientType());
-			System.out.println("tsy mosu");
-
-			clientMetierInterf.addSocieteC(c.getNomSociete(), c.getSiret(), c.getClientNom(), c.getClientPrenom(),
-					c.getMail(), c.getClientTelephone(), c.getTelephonSocie(), c.getFax(), c.getAdresseClient(),
-					c.getVille().getIdVille(), c.getPays(), c.getPostale());
-
+			System.out.println("modification");
 		}
-		// if (c.getClientId() == null) {
-		// if (c.getClientNom() == "" || c.getClientPrenom() == "" ||
-		// c.getDateNaissanceClient() == null
-		// || c.getAdresseClient() == "" || c.getClientTelephone() == "" || c.getMail()
-		// == ""
-		// || c.getClientType() == "" || c.getDateDebutClient() == null ||
-		// c.getMonantDu() == null
-		// || c.getMontantAvoir() == null || c.getTauxRemise() == null) {
-		//
-		// model.addAttribute("error", "veuiller remplir les champs");
-		// } else {
-		// clientMetierInterf.ajoutClient(c);
-		// }
-		//
-		// } else {
-		// clientMetierInterf.updateClient(c);
-		// }
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
-		return "clientpages";
+		model.addAttribute("payslist", paysMetierInterf.listPays());
+		return "exemplePage";
+
 	}
 
 	@RequestMapping(value = "/editClient")
@@ -103,7 +93,7 @@ public class ClientController {
 		model.addAttribute("client", client);
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
-		return "clientpages";
+		return "exemplePage";
 	}
 
 	@RequestMapping(value = "/deleteClient")
@@ -112,6 +102,7 @@ public class ClientController {
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
-		return "clientpages";
+		// return "clientpages";
+		return "exemplePage";
 	}
 }

@@ -77,7 +77,7 @@ public class ClientDAOImpl implements ClientDAOInterf {
 
 	@Override
 	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valFax, String valAdresse, String valVille, String valPays,
+			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPays,
 			Integer valPostale) {
 		// TODO Auto-generated method stub
 		StoredProcedureQuery req = em.createStoredProcedureQuery("AJOUTSOCIETE")
@@ -88,7 +88,6 @@ public class ClientDAOImpl implements ClientDAOInterf {
 				.registerStoredProcedureParameter("VALMAIL", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALTELEPHONE", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALPHONESOC", String.class, ParameterMode.IN)
-				.registerStoredProcedureParameter("VALFAX", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALADRESSE", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALVILLE", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALPAYS", String.class, ParameterMode.IN)
@@ -96,11 +95,9 @@ public class ClientDAOImpl implements ClientDAOInterf {
 				.setParameter("VALNOMSOCIETE", valNomSoc).setParameter("VALSIRET", valSiret)
 				.setParameter("VALNOM", valNom).setParameter("VALPRENOM", valPrenom).setParameter("VALMAIL", valMail)
 				.setParameter("VALTELEPHONE", valPhone).setParameter("VALPHONESOC", valPhoneSoc)
-				.setParameter("VALFAX", valFax).setParameter("VALADRESSE", valAdresse)
-				.setParameter("VALVILLE", valVille).setParameter("VALPAYS", valPays)
-				.setParameter("VALPOSTALE", valPostale);
+				.setParameter("VALADRESSE", valAdresse).setParameter("VALVILLE", valVille)
+				.setParameter("VALPAYS", valPays).setParameter("VALPOSTALE", valPostale);
 		req.execute();
-
 	}
 
 }

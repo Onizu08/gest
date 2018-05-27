@@ -20,7 +20,7 @@ public interface ClientDAOInterf {
 			Integer valPost, String valVille, String valPays);
 
 	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valFax, String valAdresse, String valVille, String valPays,
+			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPays,
 			Integer valPostale);
 
 }

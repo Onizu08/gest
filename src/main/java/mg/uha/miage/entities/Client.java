@@ -42,7 +42,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALMAIL"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPHONESOC"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALFAX"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS"),
@@ -119,6 +118,17 @@ public class Client {
 	@Transient
 	private String fax;
 
+	@Transient
+	private Pays makPays;
+
+	public Pays getMakPays() {
+		return makPays;
+	}
+
+	public void setMakPays(Pays makPays) {
+		this.makPays = makPays;
+	}
+
 	public String getSetDateNaisse() {
 		return setDateNaisse;
 	}
@@ -127,16 +137,16 @@ public class Client {
 		return ville;
 	}
 
+	public void setVille(Ville ville) {
+		this.ville = ville;
+	}
+
 	public List<Facture> getListFacture() {
 		return listFacture;
 	}
 
 	public void setListFacture(List<Facture> listFacture) {
 		this.listFacture = listFacture;
-	}
-
-	public void setVille(Ville ville) {
-		this.ville = ville;
 	}
 
 	public Societe getSociete() {

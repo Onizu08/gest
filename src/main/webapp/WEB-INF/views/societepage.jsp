@@ -1,136 +1,121 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%><%@taglib
-	uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="row">
-		<div class="col s12 l12">
-			<div class="row">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@include file="header.jsp"%>
+<div class="row">
+	<div class="col s12 l12">
+		<div class="row">
+			<f:form class="col s12 m8 l5 offset-l4 white"
+				modelAttribute="societe" action="saveSociete" method="post">
+				<legend>
+					<h4>Information du Société</h4>
+				</legend>
+				<div class="input_fields_wrap">
+					<div class="row" id="1">
+						<div class="input-field col s12 m8 l2">
+							<f:input path="societeId" type="text" class="validate"
+								readonly="true" />
+							<label for="societeId">Id Societe:</label>
+						</div>
+						<div class="input-field col s12 m8 l2">
+							<f:input path="nomSociete" type="text" class="validate" />
+							<label for="nomSociete">Nom Société:</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="adresseSoceite" type="text" class="validate" />
+							<label for="adresseSoceite">Adresse Societe:</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="telephoneSociete" type="text" class="validate" />
+							<label for="telephoneSociete">Téléphone Société :</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="fax" type="text" class="validate" />
+							<label for="fax">Fax Societe :</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="siret" type="text" class="validate" />
+							<label for="siret">Siret :</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="capital" type="text" class="validate" />
+							<label for="capital">Capital Social :</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="numTva" type="text" class="validate" />
+							<label for="numTva">Numéro TVA :</label>
+						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="naf" type="text" class="validate" />
+							<label for="naf">NAF :</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 m12 l12">
+						<div class="col s12 m7 l3">
+							<button class="btn waves-effect waves-light " type="submit"
+								name="action">
+								Sauvegarder<i class="material-icons right">done</i>
+							</button>
+						</div>
+						<div class="col s12 m7 l2 offset-l5 ">
+							<button class="btn waves-effect waves-light red lighten-1 right"
+								type="reset" name="action">
+								Annuler<i class="material-icons right">replay</i>
+							</button>
+						</div>
+					</div>
+				</div>
 
-				<f:form class="col s12 m8 l5 offset-l4 white"
-					modelAttribute="client" action="saveSociete" method="post">
-					<legend>
-						<h4>Information Client</h4>
-					</legend>
-					<div class="input_fields_wrap">
-						<div class="row" id="1">
-							<div class="input-field col s12 m8 l2">
-								<f:input path="societeId" type="text" class="validate"
-									readonly="true" />
-								<label for="clientId">Id Societe:</label>
-							</div>
-							<div class="input-field col s12 m8 l2">
-								<f:input path="nomSociete" type="text" class="validate" />
-								<label for="nomSociete">Nom SociÃ©tÃ©:</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="adresseSoceite" type="text" class="validate" />
-								<label for="adresseSoceite">Adresse Societe:</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="telephoneSociete" type="text" class="validate" />
-								<label for="telephoneSociete">TÃ©lÃ©phone SociÃ©tÃ© :</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="fax" type="text" class="validate" />
-								<label for="fax">Fax Societe :</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="siret" type="text" class="validate" />
-								<label for="siret">Siret :</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="capital" type="text" class="validate" />
-								<label for="capital">Capital Social :</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="numTva" type="text" class="validate" />
-								<label for="numTva">NumÃ©ro TVA :</label>
-							</div>
-							<div class="input-field col s12 m8 l5">
-								<f:input path="naf" type="text" class="validate" />
-								<label for="naf">NAF :</label>
-							</div>
-						</div>
+			</f:form>
+			<span>${error}</span>
+		</div>
+		<div class="row">
+			<f:form class="col s12 m12 l12 white">
+				<legend>
+					<h5>Liste des Sociétés</h5>
+				</legend>
+				<div class="col s12 l12">
+					<div>
+						<table class="striped bordered highlight centered white"
+							id="recherche">
+							<thead>
+								<tr>
+									<th>ID Socié</th>
+									<th>Nom Société</th>
+									<th>Adresse</th>
+									<th>Numéro Téléphone</th>
+									<th>Fax</th>
+									<th>SIRET</th>
+									<th>Capital Social</th>
+									<th>Numéro TVA</th>
+									<th>NAF</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<c:forEach items="${societelist}" var="societelist">
+								<tr>
+									<td>${societelist.societeId}</td>
+									<td>${societelist.nomSociete}</td>
+									<td>${societelist.adresseSoceite}</td>
+									<td>${societelist.telephoneSociete}</td>
+									<td>${societelist.fax}</td>
+									<td>${societelist.siret}</td>
+									<td>${societelist.capital}</td>
+									<td>${societelist.numTva}</td>
+									<td>${societelist.naf}</td>
+									<td><a
+										href="editSociete?societeId=${societelist.societeId}">Modification</a></td>
+									<td><a
+										href="deleteSociete?societeId=${societelist.societeId}">Supprimer</a></td>
+								</tr>
+							</c:forEach>
+						</table>
 					</div>
-					<div class="row">
-						<div class="col s12 m12 l12">
-							<div class="col s12 m7 l3">
-								<button class="btn waves-effect waves-light " type="submit"
-									name="action">
-									Sauvegarder<i class="material-icons right">done</i>
-								</button>
-							</div>
-							<div class="col s12 m7 l2 offset-l5 ">
-								<button class="btn waves-effect waves-light red lighten-1 right"
-									type="reset" name="action">
-									Annuler<i class="material-icons right">replay</i>
-								</button>
-							</div>
-						</div>
-					</div>
-
-				</f:form>
-				<span>${error}</span>
-			</div>
-			<div class="row">
-				<f:form class="col s12 m12 l12 white">
-					<legend>
-						<h5>Liste des Pays</h5>
-					</legend>
-					<div class="col s12 l12">
-						<div>
-							<table class="striped bordered highlight centered white"
-								id="recherche">
-								<thead>
-									<tr>
-										<th>ID SociÃ©</th>
-										<th>Nom SociÃ©tÃ©</th>
-										<th>Adresse</th>
-										<th>NumÃ©ro TÃ©lÃ©phone</th>
-										<th>Fax</th>
-										<th>SIRET</th>
-										<th>Capital Social</th>
-										<th>NumÃ©ro TVA</th>
-										<th>NAF</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<c:forEach items="${societelist}" var="societelist">
-									<tr>
-										<td>${societelist.societeId}</td>
-										<td>${societelist.nomSociete}</td>
-										<td>${societelist.adresseSoceite}</td>
-										<td>${societelist.telephoneSociete}</td>
-										<td>${societelist.fax}</td>
-										<td>${societelist.siret}</td>
-										<td>${societelist.capital}</td>
-										<td>${societelist.numTva}</td>
-										<td>${societelist.naf}</td>
-										<td><a
-											href="editSociete?societeId=${societelist.societeId}">Modification</a></td>
-										<td><a
-											href="deleteSociete?societeId=${societelist.societeId}">Supprimer</a></td>
-									</tr>
-								</c:forEach>
-							</table>
-						</div>
-					</div>
-				</f:form>
-			</div>
+				</div>
+			</f:form>
 		</div>
 	</div>
-
-
-
-</body>
-
-
-</html>
+</div>
+<%@include file="footer.jsp"%>
