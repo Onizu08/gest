@@ -18,7 +18,12 @@ public interface ClientMetierInterf {
 	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
 			Integer valPost, String valVille, String valPays);
 
-	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPays,
-			Integer valPostale);
+	// public void addSocieteC(String valNomSoc, Integer valSiret, String
+	// valNom, String valPrenom, String valMail,
+	// String valPhone, String valPhoneSoc, String valAdresse, String valPays,
+	// Integer valPostale);
+
+	public void addSociete(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
+			String valPhone, String valPhoneSoc, String valAdresse,  Integer valPostale);
 }
+// , String valVille

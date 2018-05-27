@@ -74,11 +74,51 @@ public class ClientDAOImpl implements ClientDAOInterf {
 		req.execute();
 
 	}
+	// String valVille,
+	// @Override
+	// public void addSocieteC(String valNomSoc, Integer valSiret, String
+	// valNom, String valPrenom, String valMail,
+	// String valPhone, String valPhoneSoc, String valAdresse, String valPays,
+	// Integer valPostale) {
+	// // TODO Auto-generated method stub
+	// StoredProcedureQuery req = em.createStoredProcedureQuery("AJOUTSOCIETE")
+	// .registerStoredProcedureParameter("VALNOMSOCIETE", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALSIRET", Integer.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALNOM", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALPRENOM", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALMAIL", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALTELEPHONE", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALPHONESOC", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALADRESSE", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALVILLE", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALPAYS", String.class,
+	// ParameterMode.IN)
+	// .registerStoredProcedureParameter("VALPOSTALE", Integer.class,
+	// ParameterMode.IN)
+	// .setParameter("VALNOMSOCIETE", valNomSoc).setParameter("VALSIRET",
+	// valSiret)
+	// .setParameter("VALNOM", valNom).setParameter("VALPRENOM",
+	// valPrenom).setParameter("VALMAIL", valMail)
+	// .setParameter("VALTELEPHONE", valPhone).setParameter("VALPHONESOC",
+	// valPhoneSoc)
+	// .setParameter("VALADRESSE", valAdresse)
+	//// .setParameter("VALVILLE", valVille)
+	// .setParameter("VALPAYS", valPays).setParameter("VALPOSTALE", valPostale);
+	// req.execute();
+	// }
 
 	@Override
-	public void addSocieteC(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPays,
-			Integer valPostale) {
+	public void addSociete(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
+			String valPhone, String valPhoneSoc, String valAdresse, Integer valPostale) {
 		// TODO Auto-generated method stub
 		StoredProcedureQuery req = em.createStoredProcedureQuery("AJOUTSOCIETE")
 				.registerStoredProcedureParameter("VALNOMSOCIETE", String.class, ParameterMode.IN)
@@ -89,14 +129,12 @@ public class ClientDAOImpl implements ClientDAOInterf {
 				.registerStoredProcedureParameter("VALTELEPHONE", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALPHONESOC", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALADRESSE", String.class, ParameterMode.IN)
-				.registerStoredProcedureParameter("VALVILLE", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALPAYS", String.class, ParameterMode.IN)
 				.registerStoredProcedureParameter("VALPOSTALE", Integer.class, ParameterMode.IN)
 				.setParameter("VALNOMSOCIETE", valNomSoc).setParameter("VALSIRET", valSiret)
 				.setParameter("VALNOM", valNom).setParameter("VALPRENOM", valPrenom).setParameter("VALMAIL", valMail)
 				.setParameter("VALTELEPHONE", valPhone).setParameter("VALPHONESOC", valPhoneSoc)
-				.setParameter("VALADRESSE", valAdresse).setParameter("VALVILLE", valVille)
-				.setParameter("VALPAYS", valPays).setParameter("VALPOSTALE", valPostale);
+				.setParameter("VALADRESSE", valAdresse).setParameter("VALPOSTALE", valPostale);
 		req.execute();
 	}
 

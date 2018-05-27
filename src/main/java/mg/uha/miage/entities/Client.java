@@ -34,6 +34,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS") }),
+
 		@NamedStoredProcedureQuery(name = "AJOUTSOCIETE", procedureName = "AJOUTSOCIETE", parameters = {
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOMSOCIETE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALSIRET"),
@@ -43,8 +44,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPHONESOC"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE") }) })
 
 @Entity
@@ -59,7 +58,7 @@ public class Client {
 	private String clientNom;
 	@Column(name = "prenom")
 	private String clientPrenom;
-	@Column(name = "datenaissance", nullable = false)
+	@Column(name = "datenaissance")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateNaissanceClient;
@@ -70,10 +69,10 @@ public class Client {
 	@Column(name = "mail")
 	private String mail;
 	@Column(name = "postale")
-	private Integer postale;
+	private String postale;
 	@Column(name = "type")
 	private String clientType;
-	@Column(name = "datedebutclient", nullable = false)
+	@Column(name = "datedebutclient")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateDebutClient;
@@ -117,20 +116,31 @@ public class Client {
 	private String telephonSocie;
 	@Transient
 	private String fax;
+	@Transient
+	private String valeurVille;
 
 	@Transient
-	private Pays makPays;
+	private Pays makaPays;
 
-	public Pays getMakPays() {
-		return makPays;
+	public Pays getMakaPays() {
+		return makaPays;
 	}
 
-	public void setMakPays(Pays makPays) {
-		this.makPays = makPays;
+	public void setMakaPays(Pays makaPays) {
+		this.makaPays = makaPays;
 	}
 
+	//
 	public String getSetDateNaisse() {
 		return setDateNaisse;
+	}
+
+	public String getValeurVille() {
+		return valeurVille;
+	}
+
+	public void setValeurVille(String valeurVille) {
+		this.valeurVille = valeurVille;
 	}
 
 	public Ville getVille() {
@@ -157,11 +167,11 @@ public class Client {
 		this.societe = societe;
 	}
 
-	public Integer getPostale() {
+	public String getPostale() {
 		return postale;
 	}
 
-	public void setPostale(Integer postale) {
+	public void setPostale(String postale) {
 		this.postale = postale;
 	}
 
@@ -334,11 +344,13 @@ public class Client {
 		this.setDateDebutClient = setDateDebutClient;
 	}
 
-	public Client(String clientNom, String clientPrenom, Date dateNaissanceClient, String adresseClient,
-			String clientTelephone, String mail, Integer postale, String clientType, Date dateDebutClient,
-			Float montantAvoir, Float monantDu, Float tauxRemise, String pays, String setDateDebutClient,
-			String setDateNaisse, String nomSociete, Integer siret, String telephonSocie, String fax) {
+	public Client(Integer clientId, String clientNom, String clientPrenom, Date dateNaissanceClient,
+			String adresseClient, String clientTelephone, String mail, String postale, String clientType,
+			Date dateDebutClient, Float montantAvoir, Float monantDu, Float tauxRemise, String pays,
+			String setDateDebutClient, String setDateNaisse, String nomSociete, Integer siret, String telephonSocie,
+			String fax, String valeurVille, Ville ville) {
 		super();
+		this.clientId = clientId;
 		this.clientNom = clientNom;
 		this.clientPrenom = clientPrenom;
 		this.dateNaissanceClient = dateNaissanceClient;
@@ -358,6 +370,8 @@ public class Client {
 		this.siret = siret;
 		this.telephonSocie = telephonSocie;
 		this.fax = fax;
+		this.valeurVille = valeurVille;
+		this.ville = ville;
 	}
 
 }
