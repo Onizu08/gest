@@ -17,7 +17,7 @@ public interface ClientDAOInterf {
 	public Client getClient(Integer idC);
 
 	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
-			Integer valPost, String valVille, String valPays);
+			String valPost, String valVille);
 
 	// public void addSocieteC(String valNomSoc, Integer valSiret, String
 	// valNom, String valPrenom, String valMail,
@@ -25,6 +25,10 @@ public interface ClientDAOInterf {
 	// Integer valPostale);
 
 	public void addSociete(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valAdresse , Integer valPostale);
+			String valPhone, String valPhoneSoc, String valAdresse,String valVille, String valPostale);
+
+	public void modificationSocietO(Integer valCLientId, String valAdresse);
+
+
 }
 // String valVille,

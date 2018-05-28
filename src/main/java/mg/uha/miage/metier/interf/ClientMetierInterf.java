@@ -16,14 +16,10 @@ public interface ClientMetierInterf {
 	public Client getClient(Integer idC);
 
 	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
-			Integer valPost, String valVille, String valPays);
-
-	// public void addSocieteC(String valNomSoc, Integer valSiret, String
-	// valNom, String valPrenom, String valMail,
-	// String valPhone, String valPhoneSoc, String valAdresse, String valPays,
-	// Integer valPostale);
+			String valPost, String valVille);
 
 	public void addSociete(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valAdresse,  Integer valPostale);
+			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPostale);
+
+	public void modificationSocietO(Integer valCLientId, String valAdresse);
 }
-// , String valVille

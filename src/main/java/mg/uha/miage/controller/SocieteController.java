@@ -35,13 +35,7 @@ public class SocieteController {
 		if (soc.getSocieteId() != null) {
 			societeMetierInterf.updateSociete(soc);
 		} else {
-			if (soc.getNomSociete() == "" || soc.getAdresseSoceite() == "" || soc.getTelephoneSociete() == ""
-					|| soc.getSiret() == null || soc.getCapital() == null || soc.getNumTva() == null
-					|| soc.getNaf() == "") {
-				model.addAttribute("error", "Veuiller remplir les champs");
-			} else {
-				// societeMetierInterf.ajoutSociete(soc);
-			}
+			model.addAttribute("error", "Aucune Modification effectué");
 		}
 		model.addAttribute("societe", new Societe());
 		model.addAttribute("societelist", societeMetierInterf.listSociete());

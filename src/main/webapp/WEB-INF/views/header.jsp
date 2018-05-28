@@ -53,9 +53,8 @@
 						class="material-icons">menu</ia>
 				</a>
 			</div>
-			<div class="col s6 m8 l3">
-				<img alt="sarylogo"
-					src="<%=request.getContextPath()%>/resources/img/grh.svg">
+			<div class="col s12 m12 l12">
+				<img src="<%=request.getContextPath()%>resources/img/logo.svg">
 			</div>
 		</div>
 	</header>

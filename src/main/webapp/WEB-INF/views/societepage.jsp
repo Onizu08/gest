@@ -74,7 +74,7 @@
 		<div class="row">
 			<f:form class="col s12 m12 l12 white">
 				<legend>
-					<h5>Liste des Sociétés</h5>
+					<h5>Liste des SociétésSSS</h5>
 				</legend>
 				<div class="col s12 l12">
 					<div>
@@ -86,7 +86,7 @@
 									<th>Nom Société</th>
 									<th>Adresse</th>
 									<th>Numéro Téléphone</th>
-									<th>Fax</th>
+									<!-- <th>Fax</th> -->
 									<th>SIRET</th>
 									<th>Capital Social</th>
 									<th>Numéro TVA</th>
@@ -100,15 +100,13 @@
 									<td>${societelist.nomSociete}</td>
 									<td>${societelist.adresseSoceite}</td>
 									<td>${societelist.telephoneSociete}</td>
-									<td>${societelist.fax}</td>
+									<%-- <td>${societelist.fax}</td> --%>
 									<td>${societelist.siret}</td>
 									<td>${societelist.capital}</td>
 									<td>${societelist.numTva}</td>
 									<td>${societelist.naf}</td>
 									<td><a
 										href="editSociete?societeId=${societelist.societeId}">Modification</a></td>
-									<td><a
-										href="deleteSociete?societeId=${societelist.societeId}">Supprimer</a></td>
 								</tr>
 							</c:forEach>
 						</table>

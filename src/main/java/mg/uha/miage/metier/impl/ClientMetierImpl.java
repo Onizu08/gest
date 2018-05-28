@@ -49,29 +49,23 @@ public class ClientMetierImpl implements ClientMetierInterf {
 
 	@Override
 	public void addClientP(String valNom, String valPrenom, String valMail, String valPhone, String valAdresse,
-			Integer valPost, String valVille, String valPays) {
+			String valPost, String valVille) {
 		// TODO Auto-generated method stub
-		clientDAO.addClientP(valNom, valPrenom, valMail, valPhone, valAdresse, valPost, valVille, valPays);
+		clientDAO.addClientP(valNom, valPrenom, valMail, valPhone, valAdresse, valPost, valVille);
 	}
 
 	@Override
 	public void addSociete(String valNomSoc, Integer valSiret, String valNom, String valPrenom, String valMail,
-			String valPhone, String valPhoneSoc, String valAdresse, Integer valPostale) {
+			String valPhone, String valPhoneSoc, String valAdresse, String valVille, String valPostale) {
 		// TODO Auto-generated method stub
 		clientDAO.addSociete(valNomSoc, valSiret, valNom, valPrenom, valMail, valPhone, valPhoneSoc, valAdresse,
-				valPostale);
+				valVille, valPostale);
 	}
 
-	// // String valVille, valVille
-	// @Override
-	// public void addSocieteC(String valNomSoc, Integer valSiret, String
-	// valNom, String valPrenom, String valMail,
-	// String valPhone, String valPhoneSoc, String valAdresse, String valPays,
-	// Integer valPostale) {
-	// // TODO Auto-generated method stub
-	// clientDAO.addSocieteC(valNomSoc, valSiret, valNom, valPrenom, valMail,
-	// valPhone, valPhoneSoc, valAdresse,
-	// valPays, valPostale);
-	// }
+	@Override
+	public void modificationSocietO(Integer valCLientId, String valAdresse) {
+		// TODO Auto-generated method stub
+		clientDAO.modificationSocietO(valCLientId, valAdresse);
+	}
 
 }

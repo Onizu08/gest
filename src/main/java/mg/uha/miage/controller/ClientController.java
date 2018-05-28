@@ -58,43 +58,36 @@ public class ClientController {
 		System.out.println("valeur apres modification " + v.getClientType());
 		// anao ajout
 		if (c.getClientId() == null) {
-
-			// mande ajout client; mila modifien ny iste payse
-			if (c.getClientType().toString().equals(v.getClientType().toString())) {
-
-				System.out.println("valeur post" + c.getPostale());
-				// clientMetierInterf.addClientP(c.getClientNom(),
-				// c.getClientPrenom(), c.getMail(),
-				// c.getClientTelephone(), c.getAdresseClient(), c.getPostale(),
-				// c.getVille().getIdVille(),
-				// c.getPays());
-			} else {
-
-				// ajout societe
-				//
-				// clientMetierInterf.addSocieteC(c.getNomSociete(),
-				// c.getSiret(), c.getClientNom(), c.getClientPrenom(),
-				// c.getMail(), c.getClientTelephone(), c.getTelephonSocie(),
-				// c.getAdresseClient(), c.getPays(),
-				// c.getPostale());
-				// // c.getVille().getIdVille(),
-
-				System.out.println("valeur nom " + c.getClientNom());
-				System.out.println("valeur nomSoc " + c.getNomSociete());
-				System.out.println("valeur post" + c.getPostale());
-
-				//
-				// clientMetierInterf.addSociete(c.getNomSociete(),
-				// c.getSiret(), c.getClientNom(), c.getClientPrenom(),
-				// c.getMail(), c.getClientTelephone(), c.getTelephonSocie(),
-				// c.getAdresseClient(),
-				// c.getPostale());
-				System.out.println("Ajout effectué Societe");
-			}
+			System.out.println("valeur id client ajout : " + c.getClientId());
+			// // mande ajout client; mila modifien ny iste payse
+			// if
+			// (c.getClientType().toString().equals(v.getClientType().toString()))
+			// {
+			//
+			// System.out.println("valeur post" + c.getPostale());
+			// clientMetierInterf.addClientP(c.getClientNom(),
+			// c.getClientPrenom(), c.getMail(),
+			// c.getClientTelephone(), c.getAdresseClient(), c.getPostale(),
+			// c.getVille().getIdVille());
+			// } else {
+			//
+			// clientMetierInterf.addSociete(c.getNomSociete(), c.getSiret(),
+			// c.getClientNom(), c.getClientPrenom(),
+			// c.getMail(), c.getClientTelephone(), c.getTelephonSocie(),
+			// c.getAdresseClient(),
+			// c.getVille().getIdVille(), c.getPostale());
+			// }
 		}
 		// debut modification
 		else {
-			System.out.println("modification");
+			System.out.println("valeur id client modification : " + c.getClientId());
+			if (c.getClientType().toString().equals(v.getClientType().toString())) {
+				System.out.println("modification particulier ");
+
+			} else {
+				System.out.println("modification professionel");
+
+			}
 		}
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());

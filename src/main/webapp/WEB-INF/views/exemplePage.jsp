@@ -45,19 +45,11 @@
 							<f:input path="postale" type="text" class="validate" />
 							<label for="postale">Code Postale : </label>
 						</div>
-
 						<div class="input-field col s12 m8 l5">
 							<f:select path="ville" items="${villelist}" itemValue="idVille"
 								itemLabel="idVille"></f:select>
 							<label>Ville Id</label>
 
-						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:select path="pays">
-								<f:option value="france">France</f:option>
-								<f:option value="Madagascar">Madagascar</f:option>
-							</f:select>
-							<label for="idVille">Ville Id</label>
 						</div>
 					</div>
 
@@ -105,12 +97,7 @@
 							<label for="idVille">Ville</label>
 
 						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:select path="pays" items="${payslist}" itemValue="paysId"
-								itemLabel="paysId"></f:select>
-							<label>Pays</label>
 
-						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -146,8 +133,8 @@
 				<th>Adresse</th>
 				<th>Code Postale</th>
 				<th>Ville</th>
-				<th>Pays</th>
 				<th>Societe</th>
+				<th>Type client</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -161,8 +148,8 @@
 					<td>${clientlist.adresseClient }</td>
 					<td>${clientlist.postale }</td>
 					<td>${clientlist.ville.idVille }</td>
-					<td>${clientlist.pays}</td>
 					<td>${clientlist.societe.societeId}</td>
+					<td>${clientlist.clientType}</td>
 					<td><a href="editClient?clientId=${clientlist.clientId}">Modification</a>
 						<a href="deleteClient?clientId=${clientlist.clientId}">Supprimer</a></td>
 				</tr>

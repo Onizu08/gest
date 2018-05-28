@@ -31,9 +31,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALEMAIL"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPAYS") }),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPOSTALE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE") }),
+
+		@NamedStoredProcedureQuery(name = "MODIFICATIONSOCIETE", procedureName = "MODIFICATIONSOCIETE", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALCLIENTID"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE") }),
 
 		@NamedStoredProcedureQuery(name = "AJOUTSOCIETE", procedureName = "AJOUTSOCIETE", parameters = {
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOMSOCIETE"),
@@ -44,7 +47,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALTELEPHONE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPHONESOC"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE"),
-				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALPOSTALE") }) })
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALVILLE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALPOSTALE") }) })
 
 @Entity
 @Table(name = "client")
