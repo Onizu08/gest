@@ -10,7 +10,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/materialize.min.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/resources/js/apps.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/app.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/resources/js/init.js"></script>
 <script type="text/javascript"

@@ -19,7 +19,6 @@
 							<f:option value="Professionnel">Client Professionnel</f:option>
 						</f:select>
 					</div>
-
 					<div id="clientParticulier" class="typeClientCoordonnees">
 						<div class="input-field col s12 m8 l5">
 							<f:input path="clientNom" type="text" class="validate" />
@@ -49,7 +48,6 @@
 							<f:select path="ville" items="${villelist}" itemValue="idVille"
 								itemLabel="idVille"></f:select>
 							<label>Ville Id</label>
-
 						</div>
 					</div>
 
@@ -95,9 +93,7 @@
 							<f:select path="ville.idVille" items="${villelist}"
 								itemValue="idVille" itemLabel="idVille"></f:select>
 							<label for="idVille">Ville</label>
-
 						</div>
-
 					</div>
 				</div>
 				<div class="row">
@@ -121,39 +117,40 @@
 	</div>
 </div>
 <span>${error}</span>
-<div>
-	<table class="striped bordered highl ight centered white"
-		id="recherche">
-		<thead>
-			<tr>
-				<th>Id Client</th>
-				<th>Nom</th>
-				<th>Prenom</th>
-				<th>Téléphone</th>
-				<th>Adresse</th>
-				<th>Code Postale</th>
-				<th>Ville</th>
-				<th>Societe</th>
-				<th>Type client</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${clientlist}" var="clientlist">
+<div class="row">
+	<f:form class="col s12 m12 l12 white">
+		<table class="striped bordered highl ight centered white recherche">
+			<thead>
 				<tr>
-					<td>${clientlist.clientId }</td>
-					<td>${clientlist.clientNom }</td>
-					<td>${clientlist.clientPrenom }</td>
-					<td>${clientlist.clientTelephone}</td>
-					<td>${clientlist.adresseClient }</td>
-					<td>${clientlist.postale }</td>
-					<td>${clientlist.ville.idVille }</td>
-					<td>${clientlist.societe.societeId}</td>
-					<td>${clientlist.clientType}</td>
-					<td><a href="editClient?clientId=${clientlist.clientId}">Modification</a>
-						<a href="deleteClient?clientId=${clientlist.clientId}">Supprimer</a></td>
+					<th>Id Client</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Téléphone</th>
+					<th>Adresse</th>
+					<th>Code Postale</th>
+					<th>Ville</th>
+					<th>Societe</th>
+					<th>Type client</th>
+					<th>Action</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${clientlist}" var="clientlist">
+					<tr>
+						<td>${clientlist.clientId }</td>
+						<td>${clientlist.clientNom }</td>
+						<td>${clientlist.clientPrenom }</td>
+						<td>${clientlist.clientTelephone}</td>
+						<td>${clientlist.adresseClient }</td>
+						<td>${clientlist.postale }</td>
+						<td>${clientlist.ville.idVille }</td>
+						<td>${clientlist.societe.societeId}</td>
+						<td>${clientlist.clientType}</td>
+						<td><a href="editClient?clientId=${clientlist.clientId}">Modification</a>
+							<a href="deleteClient?clientId=${clientlist.clientId}">Supprimer</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</f:form>
 </div><%@include file="footer.jsp"%>

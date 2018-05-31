@@ -1,5 +1,9 @@
 package mg.uha.miage.controller;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,14 +11,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import mg.uha.miage.entities.Client;
 import mg.uha.miage.entities.Commande;
 import mg.uha.miage.metier.interf.ClientMetierInterf;
 import mg.uha.miage.metier.interf.CommandeMetierInterf;
 
 @Controller
 @RequestMapping(value = "/Commande")
+@Transactional
 public class CommandeController {
+
+	@PersistenceContext
+	private EntityManager em;
+
 	@Autowired
 	private CommandeMetierInterf commandeMetierInterf;
 
@@ -31,7 +43,6 @@ public class CommandeController {
 
 	@RequestMapping(value = "/saveCommande")
 	public String saveCommande(@Valid Commande commande, Model model, BindingResult bindingResult) {
-
 		model.addAttribute("commande", new Commande());
 		model.addAttribute("commandelist", commandeMetierInterf.listCommande());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
@@ -39,7 +50,6 @@ public class CommandeController {
 	}
 
 	@RequestMapping(value = "/deleteCommande")
-
 	public String deleteCommande(Integer commandeId, Model model) {
 		commandeMetierInterf.deleteCommande(commandeId);
 		model.addAttribute("commande", new Commande());
@@ -47,4 +57,21 @@ public class CommandeController {
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		return "commandepage";
 	}
+
+	// maka donnee atao param
+	public String makaPrenom(Integer e) {
+		Client c = new Client();
+		Query req = em.createQuery("select c.clientPrenom from Client c where c.clientId = :clientI")
+				.setParameter("clientI", e);
+		String prenom = (String) req.getSingleResult();
+		c.setClientPrenom(prenom);
+		return c.getClientPrenom();
+	}
+
+	// mandefa donnée
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String affichePrenom(@RequestParam("clientId") Integer id) {
+		return makaPrenom(id);
+	}
+
 }

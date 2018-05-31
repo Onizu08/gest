@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
@@ -23,6 +24,10 @@
 			</list>
 		</property>
 	</bean>
+
+
+	<import resource="classpath:jasper-views.xml" />
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
@@ -106,5 +111,20 @@
 		<property name="reductionDAO" ref="reductionDAO"></property>
 	</bean>
 
+	<s:http>
+		<s:intercept-url pattern="/Client/**" access="ROLE_ADMIN" />
+		<s:form-login login-page="/login" default-target-url="/Commande/index"
+			authentication-failure-url="/login" />
+		<s:logout logout-success-url="/login" />
+	</s:http>
+
+	<s:authentication-manager>
+		<s:authentication-provider>
+			<s:jdbc-user-service data-source-ref="datasource"
+				users-by-username-query="select login, pwd from utilisateur where login =?"
+				authorities-by-username-query="select u.login, r.profilelib from utilisateur u, profil r where r.profileid = u.profileId and u.login =?" />
+		</s:authentication-provider>
+	</s:authentication-manager>
+
 </beans>
- 
+

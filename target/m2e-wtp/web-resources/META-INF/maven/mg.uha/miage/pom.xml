@@ -20,6 +20,9 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+
+
+		<!-- Spring debut -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -38,6 +41,7 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>3.2.5.RELEASE</version>
 		</dependency>
+		<!-- Spring fin -->
 
 		<dependency>
 			<groupId>batik</groupId>
@@ -130,7 +134,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
-		
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -274,14 +278,12 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
-
 		<!-- jaspersoft -->
 		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 		</dependency>
-
 
 		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 		<dependency>
@@ -305,7 +307,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>3.2.6.RELEASE</version>
+			<version>3.2.9.RELEASE</version>
 		</dependency>
 
 
