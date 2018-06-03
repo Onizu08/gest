@@ -60,23 +60,17 @@ public class ClientController {
 		if (c.getClientId() == null) {
 			System.out.println("valeur id client ajout : " + c.getClientId());
 			// // mande ajout client; mila modifien ny iste payse
-			// if
-			// (c.getClientType().toString().equals(v.getClientType().toString()))
-			// {
-			//
-			// System.out.println("valeur post" + c.getPostale());
-			// clientMetierInterf.addClientP(c.getClientNom(),
-			// c.getClientPrenom(), c.getMail(),
-			// c.getClientTelephone(), c.getAdresseClient(), c.getPostale(),
-			// c.getVille().getIdVille());
-			// } else {
-			//
-			// clientMetierInterf.addSociete(c.getNomSociete(), c.getSiret(),
-			// c.getClientNom(), c.getClientPrenom(),
-			// c.getMail(), c.getClientTelephone(), c.getTelephonSocie(),
-			// c.getAdresseClient(),
-			// c.getVille().getIdVille(), c.getPostale());
-			// }
+			if (c.getClientType().toString().equals(v.getClientType().toString())) {
+
+				System.out.println("valeur post" + c.getPostale());
+				clientMetierInterf.addClientP(c.getClientNom(), c.getClientPrenom(), c.getMail(),
+						c.getClientTelephone(), c.getAdresseClient(), c.getPostale(), c.getVille().getIdVille());
+			} else {
+
+				clientMetierInterf.addSociete(c.getNomSociete(), c.getSiret(), c.getClientNom(), c.getClientPrenom(),
+						c.getMail(), c.getClientTelephone(), c.getTelephonSocie(), c.getAdresseClient(),
+						c.getVille().getIdVille(), c.getPostale());
+			}
 		}
 		// debut modification
 		else {

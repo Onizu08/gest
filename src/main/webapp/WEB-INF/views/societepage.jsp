@@ -78,8 +78,7 @@
 				</legend>
 				<div class="col s12 l12">
 					<div>
-						<table class="striped bordered highlight centered white"
-							id="recherche">
+						<table class="striped bordered highlight centered white recherche">
 							<thead>
 								<tr>
 									<th>ID Socié</th>

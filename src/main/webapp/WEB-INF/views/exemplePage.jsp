@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
+<a href="<c:url value="/j_spring_security_logout" />"> Logout</a>
 <div class="row">
 	<div class="col s12 m12 l12">
 		<div class="row">

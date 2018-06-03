@@ -22,7 +22,12 @@ public class Utilisateur {
 	@Column(name = "utilisateurid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer utilisateurId;
-
+	@Column(name = "login")
+	private String login;
+	@Column(name = "pwd")
+	private String pwd;
+	
+	
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
 	private List<Facture> listFacture = new ArrayList<Facture>();
 
@@ -33,11 +38,6 @@ public class Utilisateur {
 	@ManyToOne
 	@JoinColumn(name = "societeId")
 	private Societe societe;
-
-	@Column(name = "login")
-	private String login;
-	@Column(name = "pwd")
-	private String pwd;
 
 	public Integer getUtilisateurId() {
 		return utilisateurId;
