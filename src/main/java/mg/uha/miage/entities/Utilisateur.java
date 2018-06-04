@@ -26,8 +26,9 @@ public class Utilisateur {
 	private String login;
 	@Column(name = "pwd")
 	private String pwd;
-	
-	
+	@Column(name = "actived")
+	private boolean actived;
+
 	@OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
 	private List<Facture> listFacture = new ArrayList<Facture>();
 
@@ -41,6 +42,14 @@ public class Utilisateur {
 
 	public Integer getUtilisateurId() {
 		return utilisateurId;
+	}
+
+	public boolean isActived() {
+		return actived;
+	}
+
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 
 	public void setUtilisateurId(Integer utilisateurId) {
@@ -92,10 +101,11 @@ public class Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Utilisateur(String login, String pwd) {
+	public Utilisateur(String login, String pwd, boolean actived) {
 		super();
 		this.login = login;
 		this.pwd = pwd;
+		this.actived = actived;
 	}
 
 }
