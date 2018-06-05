@@ -48,77 +48,27 @@
 	<!-- Modal Structure -->
 	<ul>
 		<ol class="waves-effect">
-			CAPITAL HUMAN
+			GESTION DE FACTURE
 			<li><a class="waves-effect"
 				href="<%=request.getContextPath()%>/">Accueil</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Facture/index">Gestion
-					Facture</a>
-				<ul>
-					<ol>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Individu/index">Gestion
-								Commande</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Employe/index">Gestion
-								Employe</a></li>
-					</ol>
-				</ul></li>
+				href="<%=request.getContextPath()%>/Client/index">Gestion de
+					Client</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Achat/index">Gestion Achat</a></li>
-
-			<li><a class="waves-effect">Gestion Congé</a>
-				<ul>
-					<ol>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/DemandeConge/index">Demande
-								Conge</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Validation/index">Validation&nbsp;Conge&nbsp;en&nbsp;attente</a></li>
-					</ol>
-				</ul></li>
+				href="<%=request.getContextPath()%>/Societe/index">Gestion de
+					Société</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Statistique/index">Statistiques</a>
-				<ul>
-					<ol>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Age/index">Pyramide&nbsp;des&nbsp;âges</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/PresenceMois/encours">Présence&nbsp;mois&nbsp;en&nbsp;cours</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/PresenceMois/index">Présence&nbsp;dans&nbsp;l'année</a></li>
-					</ol>
-				</ul></li>
+				href="<%=request.getContextPath()%>/Commande/index">Gestion de
+					Commande</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/menurecherche/index">Recherche</a>
-				<ul>
-					<ol>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/ReleveSpecifie/index">Relevé&nbsp;avec&nbsp;paramètre</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Releve/index">Relevé&nbsp;de&nbsp;congé&nbsp;pour&nbsp;chaque&nbsp;employé</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/HistoriqueSpecife/index">Historique&nbsp;avec&nbsp;paramètre&nbsp;pour&nbsp;chaque&nbsp;employé</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/menuhistorique/index">Historique&nbsp;des&nbsp;congés</a></li>
-					</ol>
-				</ul></li>
+				href="<%=request.getContextPath()%>/Achat/index">Gestion d'Achat
+			</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Document/index">Documents </a></li>
-
+				href="<%=request.getContextPath()%>/Facture/index">Gestion de
+					Facture </a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Utilitaire/index">Utilitaire</a>
-				<ul>
-					<ol>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Traitement/index">Traitement</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Donnees/index">Données</a></li>
-						<li><a class="waves-effect"
-							href="<%=request.getContextPath()%>/Parametre/index">Paramètres</a></li>
-
-					</ol>
-				</ul></li>
+				href="<%=request.getContextPath()%>/Payement/index">Gestion de
+					Payement </a></li>
 		</ol>
 	</ul>
 	<li><a class="waves-effect red lighten-1"

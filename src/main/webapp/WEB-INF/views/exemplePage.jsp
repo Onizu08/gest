@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp"%><%@include file="sidenave.jsp"%>
 <a href="<c:url value="/j_spring_security_logout" />"> Logout</a>
 <div class="row">
 	<i class="material-icons prefix">account_circle</i> <input

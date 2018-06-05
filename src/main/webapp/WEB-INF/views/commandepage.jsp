@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
-
+<%@include file="sidenave.jsp"%>
 <div class="row">
 	<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="commande"
 		action="saveCommande" method="post">

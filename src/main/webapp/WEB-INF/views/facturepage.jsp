@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="header.jsp"%>
+<%@include file="sidenave.jsp"%>
 <div class="row">
 	<div class="col s12 l12">
 		<div class="row">
@@ -85,8 +86,8 @@
 						</div>
 					</div>
 				</div>
+			</f:form>
 		</div>
-		</f:form>
 		<span>${error}</span>
 	</div>
 	<div class="row">
