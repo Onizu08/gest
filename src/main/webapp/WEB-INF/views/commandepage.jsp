@@ -1,4 +1,3 @@
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -40,9 +39,13 @@
 							id="dateCommande" />
 						<label>Date de la Commande :</label>
 					</div>
-					<div class="input-field col s12 m8 l5">
-						<f:input path="statut" type="text" class="validate" />
-						<label for="statut">Statut :</label>
+					<div class="input-field col s12 m8 l2">
+						<f:select path="statut" type="text" class="validate" name="statut"
+							placeholder="statut" id="statut">
+							<f:option value="En cours">En cours</f:option>
+							<f:option value="Valide">Valide</f:option>
+						</f:select>
+						<label for=nbPeriode>Staut</label>
 					</div>
 				</div>
 			</div>

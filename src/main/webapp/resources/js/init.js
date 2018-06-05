@@ -78,6 +78,22 @@ function prenom() {
 }
 
 // fin prenom
+//
+//// manome prix
+function makaPrix() {
+	var jq = jQuery.noConflict();
+	var obj = document.getElementById("articleId");
+	var value = obj.options[obj.selectedIndex].value;
+	jq(function() {
+		jq.post("/miage/Achat/index/", {
+			articleId : value
+		}, function(data) {
+			jq("#prix").replaceWith('<span id="prix">' + data + '</span>');
+		});
+	});
+//}
+
+// fin prix
 
 $(document).ready(function() {
 	$('.typeClientCoordonnees').hide();
@@ -91,6 +107,10 @@ $(document).ready(function() {
 (function($) {
 
 	// changement prenom commande
+
+	// $('#articleId').change(function() {
+	// makaPrix();
+	// })
 
 	$('#clientId').change(function() {
 		prenom();

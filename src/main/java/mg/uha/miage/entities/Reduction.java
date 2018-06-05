@@ -34,6 +34,8 @@ public class Reduction {
 	private String reductionApplique;
 	@Column(name = "reductiondescription")
 	private String reductionDescription;
+	@Column(name = "taux")
+	private Float taux;
 
 	public Integer getReductionId() {
 		return reductionId;
@@ -59,6 +61,22 @@ public class Reduction {
 		this.reductionLib = reductionLib;
 	}
 
+	public List<Attribuer> getListAttribuer() {
+		return listAttribuer;
+	}
+
+	public void setListAttribuer(List<Attribuer> listAttribuer) {
+		this.listAttribuer = listAttribuer;
+	}
+
+	public Float getTaux() {
+		return taux;
+	}
+
+	public void setTaux(Float taux) {
+		this.taux = taux;
+	}
+
 	public String getReductionApplique() {
 		return reductionApplique;
 	}
@@ -80,11 +98,12 @@ public class Reduction {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reduction(String reductionLib, String reductionApplique, String reductionDescription) {
+	public Reduction(String reductionLib, String reductionApplique, String reductionDescription, Float taux) {
 		super();
 		this.reductionLib = reductionLib;
 		this.reductionApplique = reductionApplique;
 		this.reductionDescription = reductionDescription;
+		this.taux = taux;
 	}
 
 }

@@ -1,13 +1,20 @@
 package mg.uha.miage.controller;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import mg.uha.miage.entities.Article;
 import mg.uha.miage.metier.interf.ArticleMetierInterf;
@@ -15,8 +22,11 @@ import mg.uha.miage.metier.interf.CategorieMetierInterf;
 
 @Controller
 @RequestMapping(value = "/Article")
+@Transactional
 public class ArticleController {
 
+	@PersistenceContext
+	private EntityManager el;
 	@Autowired
 	private ArticleMetierInterf articleMetierInterf;
 
@@ -74,4 +84,5 @@ public class ArticleController {
 		return "articlepage";
 	}
 
+	
 }

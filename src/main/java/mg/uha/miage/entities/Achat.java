@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "achat")
@@ -25,10 +26,15 @@ public class Achat {
 	private Float tva;
 	@Column(name = "remise")
 	private Float remise;
-
+	@Column(name = "total")
+	private Float total;
+	@Column(name = "valeurtva")
+	private Float valeurTva;
 	@ManyToOne
 	@JoinColumn(name = "commandeId")
 	private Commande commande;
+	@Transient
+	private Float prix;
 
 	@ManyToOne
 	@JoinColumn(name = "articleId")
@@ -58,8 +64,32 @@ public class Achat {
 		return montantHt;
 	}
 
+	public Float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(Float prix) {
+		this.prix = prix;
+	}
+
 	public void setMontantHt(Float montantHt) {
 		this.montantHt = montantHt;
+	}
+
+	public Float getValeurTva() {
+		return valeurTva;
+	}
+
+	public void setValeurTva(Float valeurTva) {
+		this.valeurTva = valeurTva;
+	}
+
+	public Float getTotal() {
+		return total;
+	}
+
+	public void setTotal(Float total) {
+		this.total = total;
 	}
 
 	public Float getTva() {
@@ -107,12 +137,15 @@ public class Achat {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Achat(Float quantite, Float montantHt, Float tva, Float remise) {
+	public Achat(Float quantite, Float montantHt, Float tva, Float remise, Float total, Float valeurTva, Float prix) {
 		super();
 		this.quantite = quantite;
 		this.montantHt = montantHt;
 		this.tva = tva;
 		this.remise = remise;
+		this.total = total;
+		this.valeurTva = valeurTva;
+		this.prix = prix;
 	}
 
 }

@@ -21,13 +21,73 @@
 											"<input type='text' class='validate' name='montantHt' placeholder='montantHt'/>");
 							$("#formulaire")
 									.append(
-											"<input type='text' class='validate' name='tva' placeholder='tva'/>");
+											"<input type='text' class='validate' name='remise' placeholder='remise'/>");
 							$("#formulaire")
 									.append(
-											"<input type='text' class='validate' name='remise' placeholder='remise'/>");
+											"<input type='text' class='validate' name='valeurTva' placeholder='valeurTva'/>");
+							$("#formulaire")
+									.append(
+											"<input type='text' class='validate' name='somme' placeholder='somme'/>");
+							$("#formulaire")
+									.append(
+											"<se type='text' class='validate' name='somme' placeholder='somme'/>");
 						});
 	});
 </script>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var sommeHT;
+		var tva = document.getElementById("tva").value;
+		var prixHT;
+		var qte;
+
+		$("#montantHt").change(function() {
+			prixHT = $("#montantHt").val();
+			qte = $("#quantite").val();
+			sommeHT = prixHT * qte;
+			tva = document.getElementById("tva").value;
+			if (tva > 0) {
+				var some = sommeHT;
+				var ttc = some * tva;
+				$("#somme").val("" + sommeHT);
+				$("#valeurTva").val("" + ttc)
+			} else {
+				$("#somme").val("" + sommeHT);
+				$("#valeurTva").val("" + sommeHT);
+			}
+		});
+
+		$("#quantite").change(function() {
+			prixHT = $("#montantHt").val();
+			qte = $("#quantite").val();
+			sommeHT = prixHT * qte;
+			tva = document.getElementById("tva").value;
+			if (tva > 0) {
+				var some = sommeHT;
+				var ttc = some * tva;
+				$("#somme").val("" + sommeHT);
+				$("#valeurTva").val("" + ttc)
+			} else {
+				$("#somme").val("" + sommeHT);
+				$("#valeurTva").val("" + sommeHT);
+			}
+		});
+
+		$("#tva").change(function() {
+			tva = document.getElementById("tva").value;
+			var some = sommeHT;
+			var ttc = some * tva;
+			$("#somme").val("" + sommeHT);
+			$("#valeurTva").val("" + ttc);
+		});
+	});
+</script>
+
+
 <div class="row">
 	<div class="row">
 		<div class="row">
@@ -61,24 +121,41 @@
 						<label for="commandeId">Numéro de facture</label>
 					</div>
 					<div class="input-field col s12 m8 l5">
-						<f:input path="quantite" type="text" class="validate"
-							name="quantite" placeholder="quantite" />
-						<label for="quantite">Quantite</label>
-					</div>
-					<div class="input-field col s12 m8 l5">
 						<f:input path="montantHt" type="text" class="validate"
-							name="montantHt" placeholder="montantHt" />
+							name="montantHt" placeholder="montantHt" id="montantHt" />
 						<label for="montantHt">Montant:</label>
 					</div>
 					<div class="input-field col s12 m8 l5">
-						<f:input path="tva" type="text" class="validate" name="tva"
-							placeholder="tca" />
-						<label for="tva">TVA:</label>
+						<f:input path="quantite" type="text" class="validate"
+							name="quantite" placeholder="quantite" id="quantite" />
+						<label for="quantite">Quantite</label>
 					</div>
+
+					<div class="input-field col s12 m8 l2">
+						<f:select path="tva" type="text" class="validate" name="tva"
+							placeholder="tva" id="tva">
+							<f:option value="0.05">5%</f:option>
+							<f:option value="0.1">10%</f:option>
+							<f:option value="0.02">20%</f:option>
+						</f:select>
+						<label for=nbPeriode>Taux de TVA:</label>
+					</div>
+
+					<div class="input-field col s12 m8 l5">
+						<f:input path="valeurTva" type="text" class="validate"
+							name="valeurTva" placeholder="valeurTva" id="valeurTva" />
+						<label for="tva">Valeur Tva:</label>
+					</div>
+
 					<div class="input-field col s12 m8 l5">
 						<f:input path="remise" type="text" class="validate" name="remise"
 							placeholder="remise" />
 						<label for="remise">Remise:</label>
+					</div>
+					<div class="input-field col s12 m8 l5">
+						<f:input path="total" type="text" class="validate" name="total"
+							placeholder="total" id="somme" />
+						<label for="total">Total:</label>
 					</div>
 				</div>
 			</div>
