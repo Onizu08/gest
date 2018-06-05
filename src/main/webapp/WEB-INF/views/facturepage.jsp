@@ -22,6 +22,8 @@
 								itemValue="clientId" itemLabel="clientNom"></f:select>
 							<label for="clientId">Client Id</label>
 						</div>
+
+
 						<div class="input-field col s12 m8 l5">
 							<f:select path="devise.deviseId" items="${deviselist}"
 								itemValue="deviseId" itemLabel="deviseId"></f:select>
@@ -83,57 +85,53 @@
 						</div>
 					</div>
 				</div>
-			</f:form>
-			<span>${error}</span>
 		</div>
-
-		<div class="row">
-			<p>Calcul</p>
-		</div>
-
-		<div class="row">
-			<f:form class="col s12 m12 l12 white">
-				<legend>
-					<h5>Liste des Factures</h5>
-				</legend>
-				<div class="col s12 l12">
-					<div>
-						<table class="striped bordered highlight centered white recherche">
-							<thead>
-								<tr>
-									<th>ID Facture</th>
-									<th>Date de la facture</th>
-									<th>Type facture</th>
-									<th>Montant facture</th>
-									<th>Statut</th>
-									<th>Date d'echeance</th>
-									<th>Nombre de paiement</th>
-									<th>Frais de la facture</th>
-									<th>Nombre de jour de validité</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<c:forEach items="${facturelist}" var="facturelist">
-								<tr>
-									<td>${facturelist.factureId}</td>
-									<td>${facturelist.dateFacture}</td>
-									<td>${facturelist.typeFacture}</td>
-									<td>${facturelist.telephoneSociete}</td>
-									<td>${facturelist.fax}</td>
-									<td>${facturelist.siret}</td>
-									<td>${facturelist.capital}</td>
-									<td>${facturelist.numTva}</td>
-									<td>${facturelist.naf}</td>
-									<td><a
-										href="editFacture?factureId=${facturelist.factureId}">Modification</a>
-										<a href="deleteFacture?factureId=${societelist.factureId}">Supprimer</a></td>
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
-				</div>
-			</f:form>
-		</div>
+		</f:form>
+		<span>${error}</span>
 	</div>
+	<div class="row">
+		<f:form class="col s12 m12 l12 white">
+			<legend>
+				<h5>Liste des Factures</h5>
+			</legend>
+			<div class="col s12 l12">
+				<div>
+					<table class="striped bordered highlight centered white recherche">
+						<thead>
+							<tr>
+								<th>ID Facture</th>
+								<th>Date de la facture</th>
+								<th>Type facture</th>
+								<th>Montant facture</th>
+								<th>Statut</th>
+								<th>Date d'echeance</th>
+								<th>Nombre de paiement</th>
+								<th>Frais de la facture</th>
+								<th>Nombre de jour de validité</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<c:forEach items="${facturelist}" var="facturelist">
+							<tr>
+								<td>${facturelist.factureId}</td>
+								<td>${facturelist.dateFacture}</td>
+								<td>${facturelist.typeFacture}</td>
+								<td>${facturelist.telephoneSociete}</td>
+								<td>${facturelist.fax}</td>
+								<td>${facturelist.siret}</td>
+								<td>${facturelist.capital}</td>
+								<td>${facturelist.numTva}</td>
+								<td>${facturelist.naf}</td>
+								<td><a
+									href="editFacture?factureId=${facturelist.factureId}">Modification</a>
+									<a href="deleteFacture?factureId=${societelist.factureId}">Supprimer</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		</f:form>
+	</div>
+
 </div>
 <%@include file="footer.jsp"%>

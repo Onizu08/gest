@@ -57,8 +57,7 @@
 		</legend>
 		<div class="col s12 l12">
 			<div>
-				<table class="striped bordered highlight centered white"
-					id="recherche">
+				<table class="striped bordered highlight centered white recherche">
 					<thead>
 						<tr>
 							<th>ID Categorie</th>
@@ -75,9 +74,8 @@
 							<td>${deviselist.promoCategorie}</td>
 							<td>${deviselist.categorieDescription}</td>
 							<td><a
-								href="editCategorie?categorieId=${deviselist.categorieId}">Modification</a></td>
-							<td><a
-								href="deleteCategorie?categorieId=${deviselist.categorieId}">Supprimer</a></td>
+								href="editCategorie?categorieId=${deviselist.categorieId}">Modification</a>
+								<a href="deleteCategorie?categorieId=${deviselist.categorieId}">Supprimer</a></td>
 						</tr>
 					</c:forEach>
 				</table>

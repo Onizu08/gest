@@ -4,6 +4,9 @@
 <%@include file="header.jsp"%>
 <a href="<c:url value="/j_spring_security_logout" />"> Logout</a>
 <div class="row">
+	<i class="material-icons prefix">account_circle</i> <input
+		id="icon_prefix" type="text" class="validate"> <label
+		for="icon_prefix">User Name</label>${user}
 	<div class="col s12 m12 l12">
 		<div class="row">
 			<f:form class="col s12 m8 l5 offset-l4 white" modelAttribute="client"

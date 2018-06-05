@@ -70,8 +70,7 @@
 					<h5>Liste des Categories</h5>
 				</legend>
 				<div>
-					<table class="striped bordered highlight centered white"
-						id="recherche">
+					<table class="striped bordered highlight centered white recherche">
 						<thead>
 							<tr>
 								<th>Id Ville</th>
@@ -93,9 +92,9 @@
 								<td>${villelist.prixUnitaire }</td>
 								<td>${villelist.promoArticle }</td>
 								<td>${villelist.descriptionArticle }</td>
-								<td><a href="editArticle?articleId=${villelist.articleId}">Modification</a></td>
-								<td><a
-									href="deleteArticle?articleId=${villelist.articleId}">Supprimer</a></td>
+								<td><a href="editArticle?articleId=${villelist.articleId}">Modification</a>
+									<a href="deleteArticle?articleId=${villelist.articleId}">Supprimer</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

@@ -2,6 +2,7 @@ package mg.uha.miage.controller;
 
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ import mg.uha.miage.metier.interf.VilleMetierInterf;
 @RequestMapping(value = "/Client")
 public class ClientController {
 
+	MakaUtilisateur utilisateur = new MakaUtilisateur();
+
 	SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Autowired
@@ -31,20 +34,22 @@ public class ClientController {
 	private PaysMetierInterf paysMetierInterf;
 
 	@RequestMapping(value = "/index")
-	public String index(Model model) {
+	public String index(Model model, HttpServletRequest httpServletRequest) {
+		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
 		model.addAttribute("payslist", paysMetierInterf.listPays());
-		// return "clientpages";
 
 		return "exemplePage";
 
 	}
 
 	@RequestMapping(value = "/saveClient")
-	public String saveClient(@Valid Client c, Model model, BindingResult bindingResult) {
+	public String saveClient(@Valid Client c, Model model, BindingResult bindingResult,
+			HttpServletRequest httpServletRequest) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 			model.addAttribute("clientlist", clientMetierInterf.listClient());
 			model.addAttribute("villelist", villemetierInterf.listVille());
 			model.addAttribute("payslist", paysMetierInterf.listPays());
@@ -92,8 +97,9 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/editClient")
-	public String editClient(Integer clientId, Model model) {
+	public String editClient(Integer clientId, Model model, HttpServletRequest httpServletRequest) {
 		Client client = clientMetierInterf.getClient(clientId);
+		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 		model.addAttribute("client", client);
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
@@ -101,8 +107,9 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/deleteClient")
-	public String deleteClient(Integer clientId, Model model) {
+	public String deleteClient(Integer clientId, Model model, HttpServletRequest httpServletRequest) {
 		clientMetierInterf.deleteClient(clientId);
+		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 		model.addAttribute("client", new Client());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("villelist", villemetierInterf.listVille());
