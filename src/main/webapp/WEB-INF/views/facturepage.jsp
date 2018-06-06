@@ -13,18 +13,22 @@
 				</legend>
 				<div class="input_fields_wrap">
 					<div class="row" id="1">
+						<f:input path="factureId" type="text" class="validate"
+							style="visibility:hidden" />
 						<div class="input-field col s12 m8 l5">
-							<f:input path="factureId" type="text" class="validate"
-								readonly="true" />
-							<label for="factureId">Id Facture:</label>
-						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:select path="client.clientId" items="${clientlist}"
-								itemValue="clientId" itemLabel="clientNom"></f:select>
+							<f:select path="client.clientId" id="clientIdComm">
+								<f:option value="">Selectionner</f:option>
+								<f:options items="${clientlist}" itemValue="clientId"
+									itemLabel="clientNom" />
+
+							</f:select>
 							<label for="clientId">Client Id</label>
 						</div>
+						<div class="input-field col s12 m8 l5">
+							<f:input path="numCommande" type="text" class="validate"
+								name="commande" placeholder="commande" id="commande" />
 
-
+						</div>
 						<div class="input-field col s12 m8 l5">
 							<f:select path="devise.deviseId" items="${deviselist}"
 								itemValue="deviseId" itemLabel="deviseId"></f:select>
@@ -37,7 +41,7 @@
 							<label for="paysId">Utilisateur</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
-							<f:input path="dateFacture" type="text" class="validate" />
+							<f:input path="dateFacture" type="text" class="datepicker" />
 							<label for="dateFacture">Date Facturation:</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
@@ -53,8 +57,8 @@
 							<label for="statut">Statut :</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
-							<f:input path="dateEcheance" type="text" class="validate" />
-							<label for="siret">Date Echeance :</label>
+							<f:input path="dateEcheance" type="datepicker" class="validate" />
+							<label for="dateEcheance">Date Echeance :</label>
 						</div>
 						<div class="input-field col s12 m8 l5">
 							<f:input path="nbrPaiement" type="text" class="validate" />

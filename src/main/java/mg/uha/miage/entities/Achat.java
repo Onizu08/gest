@@ -40,6 +40,8 @@ public class Achat {
 	@JoinColumn(name = "articleId")
 	private Article article;
 
+	 
+
 	@ManyToOne
 	@JoinColumn(name = "factureId")
 	private Facture facture;
@@ -79,6 +81,8 @@ public class Achat {
 	public Float getValeurTva() {
 		return valeurTva;
 	}
+
+	 
 
 	public void setValeurTva(Float valeurTva) {
 		this.valeurTva = valeurTva;

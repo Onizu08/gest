@@ -24,8 +24,6 @@
 			</list>
 		</property>
 	</bean>
-
-
 	<import resource="classpath:jasper-views.xml" />
 
 	<bean id="entityManagerFactory"

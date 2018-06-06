@@ -64,7 +64,7 @@
 				href="<%=request.getContextPath()%>/Achat/index">Gestion d'Achat
 			</a></li>
 			<li><a class="waves-effect"
-				href="<%=request.getContextPath()%>/Facture/index">Gestion de
+				href="<%=request.getContextPath()%>/Facture/facture">Gestion de
 					Facture </a></li>
 			<li><a class="waves-effect"
 				href="<%=request.getContextPath()%>/Payement/index">Gestion de

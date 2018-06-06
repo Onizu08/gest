@@ -175,7 +175,8 @@
 									<img
 										src="<%=request.getContextPath()%>/resources/img/settings.svg">
 									<div class="contenue">
-										<span class="mot activator white-text">Gestion des Factures</span>
+										<span class="mot activator white-text">Gestion des
+											Factures</span>
 									</div>
 									<figcaption>
 										<h2 class="title">Gestion des Factures</h2>
@@ -188,7 +189,7 @@
 															<div class="tri-action">
 																<div class="col s12 l4">
 																	<i class="material-icons left">open_in_new</i><a
-																		href="<%=request.getContextPath()%>/Facture/index">Ouvrir</a>
+																		href="<%=request.getContextPath()%>/Facture/facture">Ouvrir</a>
 																</div>
 															</div>
 														</div>

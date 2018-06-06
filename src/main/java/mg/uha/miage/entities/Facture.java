@@ -81,6 +81,9 @@ public class Facture {
 	@Transient
 	private String setDateEcheance;
 
+	@Transient
+	private Integer numCommande;
+
 	public Facture() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -100,6 +103,14 @@ public class Facture {
 
 	public void setRemise(Float remise) {
 		this.remise = remise;
+	}
+
+	public Integer getNumCommande() {
+		return numCommande;
+	}
+
+	public void setNumCommande(Integer numCommande) {
+		this.numCommande = numCommande;
 	}
 
 	public Client getClient() {

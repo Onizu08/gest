@@ -23,7 +23,7 @@ import mg.uha.miage.entities.Article;
 import mg.uha.miage.entities.Commande;
 import mg.uha.miage.metier.interf.AchatMetierInterf;
 import mg.uha.miage.metier.interf.ArticleMetierInterf;
-import mg.uha.miage.metier.interf.CommandeMetierInterf;
+import mg.uha.miage.metier.interf.ClientMetierInterf;
 import mg.uha.miage.metier.interf.FactureMetierInterf;
 
 @Controller
@@ -40,7 +40,7 @@ public class AchatController {
 	private AchatMetierInterf achatMetierInterf;
 
 	@Autowired
-	private CommandeMetierInterf commandeMetierInterf;
+	private ClientMetierInterf clientMetierInterf;
 	@Autowired
 	private ArticleMetierInterf articleMetierInterf;
 
@@ -55,9 +55,24 @@ public class AchatController {
 		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 		model.addAttribute("achat", new Achat());
 		model.addAttribute("achatlist", achatMetierInterf.listAchat());
+		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("articlelist", articleMetierInterf.listArticle());
 		model.addAttribute("commandelistval", listVal(val));
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
+		System.out.println("Valeur prix : " + makaPrix(2));
+		return "achatpage";
+	}
+
+	@RequestMapping(value = "/AchatDroit")
+	public String achatDroit(Model model, HttpServletRequest httpServletRequest) {
+
+		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
+		model.addAttribute("achat", new Achat());
+		model.addAttribute("achatlist", achatMetierInterf.listAchat());
+		model.addAttribute("articlelist", articleMetierInterf.listArticle());
+		model.addAttribute("commandelistval", listVal(val));
+		model.addAttribute("facturelist", factureMetierInterf.listFacture());
+		System.out.println("Valeur prix : " + makaPrix(2));
 		return "achatpage";
 	}
 
@@ -68,6 +83,7 @@ public class AchatController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 			model.addAttribute("achatlist", achatMetierInterf.listAchat());
+			model.addAttribute("clientlist", clientMetierInterf.listClient());
 			model.addAttribute("articlelist", articleMetierInterf.listArticle());
 			model.addAttribute("commandelistval", listVal(val));
 			model.addAttribute("facturelist", factureMetierInterf.listFacture());
@@ -82,6 +98,7 @@ public class AchatController {
 		model.addAttribute("user", utilisateur.getUser(httpServletRequest));
 		model.addAttribute("achat", new Achat());
 		model.addAttribute("achatlist", achatMetierInterf.listAchat());
+		model.addAttribute("clientlist", clientMetierInterf.listClient());
 		model.addAttribute("articlelist", articleMetierInterf.listArticle());
 		model.addAttribute("commandelistval", listVal(val));
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
@@ -93,19 +110,18 @@ public class AchatController {
 		return req.getResultList();
 	}
 
-	// public Float makaPrix(Integer idA) {
-	// Article a = new Article();
-	// Query req = em.createQuery("select a.prixUnitaire from Article a where
-	// a.articleId = :idA").setParameter("idA",
-	// idA);
-	// Float val = (Float) req.getSingleResult();
-	// a.setPrixUnitaire(val);
-	// return a.getPrixUnitaire();
-	// }
+	public Float makaPrix(Integer idA) {
+		Article a = new Article();
+		Query req = em.createQuery("select a.prixUnitaire from Article a where a.articleId = :idA").setParameter("idA",
+				idA);
+		Float val = (Float) req.getSingleResult();
+		a.setPrixUnitaire(val);
+		return a.getPrixUnitaire();
+	}
 
-	// @RequestMapping(value = "/index", method = RequestMethod.POST)
-	// public @ResponseBody Float affichePrenom(@RequestParam("articleId") Integer
-	// indiv) {
-	// return makaPrix(indiv);
-	// }
+	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	public @ResponseBody Float affichePrenom(@RequestParam("articleId") Integer indiv) {
+		return makaPrix(indiv);
+	}
+
 }

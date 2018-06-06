@@ -78,9 +78,8 @@ function prenom() {
 }
 
 // fin prenom
-//
-//// manome prix
-function makaPrix() {
+// // manome prix
+function valPrix() {
 	var jq = jQuery.noConflict();
 	var obj = document.getElementById("articleId");
 	var value = obj.options[obj.selectedIndex].value;
@@ -91,9 +90,45 @@ function makaPrix() {
 			jq("#prix").replaceWith('<span id="prix">' + data + '</span>');
 		});
 	});
-//}
+}
 
 // fin prix
+
+// affichage statut
+
+function valStatut() {
+	var jq = jQuery.noConflict();
+	var obj = document.getElementById("clientIdComm");
+	var value = obj.options[obj.selectedIndex].value;
+	console.log("*******"+value);
+	jq(function() {
+		jq.post("/miage/Facture/index/", {
+			clientIdComm : value
+		}, function(data) {
+			let select = "<select path=\"numCommande\" style=\"display:block\">";
+			select = select + "<option>Sélectionner un client</option>";
+			data.filter(value => {
+				return value.clientNom == "Willy";
+
+			}).forEach(value => {
+				select=select+"<option value=\""+value.cliendId+"\">";
+				select=select+value.clientNom;
+				select=select+"</option>";
+				
+			});
+			/*data.forEach(value => {
+				select=select+"<option value=\""+value.cliendId+"\">";
+				select=select+value.clientNom;
+				select=select+"</option>";
+				
+			});*/
+				select=select+"</select>";
+			jq("#commande").replaceWith(
+					select);
+		});
+	});
+}
+// fin statut
 
 $(document).ready(function() {
 	$('.typeClientCoordonnees').hide();
@@ -108,9 +143,12 @@ $(document).ready(function() {
 
 	// changement prenom commande
 
-	// $('#articleId').change(function() {
-	// makaPrix();
-	// })
+	$('#clientIdComm').change(function() {
+		valStatut();
+	})
+	$('#articleId').change(function() {
+		valPrix();
+	})
 
 	$('#clientId').change(function() {
 		prenom();
@@ -178,8 +216,6 @@ $(document).ready(function() {
 				}, [ 'Safari', 8.5 ], [ 'Opera', 6.2 ], [ 'Others', 0.7 ] ]
 			} ]
 		});
-
-		// mand tsara aùmzay le iz hehehe
 
 		var window_width = $(window).width();
 		// convert rgb to hex value string

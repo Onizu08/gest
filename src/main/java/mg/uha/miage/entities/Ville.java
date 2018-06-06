@@ -24,9 +24,9 @@ public class Ville implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "idville", length = 10, nullable = false)
-	public String idVille;
+	private String idVille;
 	@Column(name = "libville", length = 10, nullable = false)
-	public String libVille;
+	private String libVille;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ville")
 	private List<Client> listClient = new ArrayList<Client>();
@@ -51,6 +51,14 @@ public class Ville implements Serializable {
 
 	public void setLibVille(String libVille) {
 		this.libVille = libVille;
+	}
+
+	public List<Societe> getListSociete() {
+		return listSociete;
+	}
+
+	public void setListSociete(List<Societe> listSociete) {
+		this.listSociete = listSociete;
 	}
 
 	public Ville(String libVille) {
