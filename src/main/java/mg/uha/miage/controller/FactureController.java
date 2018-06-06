@@ -37,9 +37,6 @@ public class FactureController {
 	private EntityManager em;
 
 	@Autowired
-	private CommandeMetierInterf commandeMetierInterf;
-
-	@Autowired
 	private ClientMetierInterf clientMetierInterf;
 	@Autowired
 	private FactureMetierInterf factureMetierInterf;
@@ -61,7 +58,8 @@ public class FactureController {
 		model.addAttribute("facture", new Facture());
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());
 		model.addAttribute("clientlist", clientMetierInterf.listClient());
-		// model.addAttribute("clienttsyanatycommande", listClientAnatyCommande());
+		// model.addAttribute("clienttsyanatycommande",
+		// listClientAnatyCommande());
 		model.addAttribute("deviselist", deviseMetierInterf.listDevise());
 		model.addAttribute("utilisateurlist", utilisateurMetierInterf.listUser());
 		System.out.println("Numéro de la commande " + numCommande(1, valStatut));
@@ -138,7 +136,8 @@ public class FactureController {
 		Query req = em.createQuery("select c.clientNom from Client c where c.clientId = :vidCli").setParameter("vidCli",
 				vidCli);
 		// String val = (String) req.getSingleResult();
-		// Query req = em.createQuery("select C.nom FROM Client C WHERE C.clientId =
+		// Query req = em.createQuery("select C.nom FROM Client C WHERE
+		// C.clientId =
 		// :idcli").setParameter("idcli",
 		// vidCli);
 		// List<Client> values = req.getResultList();
