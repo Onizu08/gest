@@ -10,9 +10,7 @@
 				.click(
 						function(e) {
 							e.preventDefault();
-							let value = $("#formulaire");
-							$("#formulaire").append(value);
-							console.log(value);
+							$("#formulaire").clone().appendTo("#formulaire");
 							// $("#formulaire")
 							// 		.append(
 							// 				"<input type='text' class='validate' name='nomArticle' placeholder='nomArticle'/>");
