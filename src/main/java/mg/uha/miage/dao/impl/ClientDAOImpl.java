@@ -70,7 +70,6 @@ public class ClientDAOImpl implements ClientDAOInterf {
 				.setParameter("VALTELEPHONE", valPhone).setParameter("VALADRESSE", valAdresse)
 				.setParameter("VALPOSTALE", valPost).setParameter("VALVILLE", valVille);
 		req.execute();
-
 	}
 
 	@Override

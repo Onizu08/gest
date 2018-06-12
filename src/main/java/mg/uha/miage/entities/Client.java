@@ -38,6 +38,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALCLIENTID"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALADRESSE") }),
 
+		@NamedStoredProcedureQuery(name = "MODIFICATIONACHAT", procedureName = "MODIFICATIONACHAT", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALCOMMANDE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALFACTURE") }),
+
+		@NamedStoredProcedureQuery(name = "MODIFFACTURESAVE", procedureName = "MODIFFACTURESAVE", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALFACTURE") }),
+
+		@NamedStoredProcedureQuery(name = "INSERTIONPAIEMENT", procedureName = "INSERTIONPAIEMENT", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALFACTURE"),
+				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALCLIENT") }),
+
 		@NamedStoredProcedureQuery(name = "AJOUTSOCIETE", procedureName = "AJOUTSOCIETE", parameters = {
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "VALNOMSOCIETE"),
 				@StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "VALSIRET"),

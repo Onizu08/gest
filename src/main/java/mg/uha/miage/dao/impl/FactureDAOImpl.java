@@ -3,8 +3,10 @@ package mg.uha.miage.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +50,26 @@ public class FactureDAOImpl implements FactureDAOInterf {
 	public Facture getFactureId(Integer idF) {
 		// TODO Auto-generated method stub
 		return em.find(Facture.class, idF);
+	}
+
+	@Override
+	public void modificationAchatFacture(Integer valCommande, Integer valFacture) {
+		// TODO Auto-generated method stub
+		StoredProcedureQuery req = em.createStoredProcedureQuery("MODIFICATIONACHAT")
+				.registerStoredProcedureParameter("VALCOMMANDE", Integer.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("VALFACTURE", Integer.class, ParameterMode.IN)
+				.setParameter("VALCOMMANDE", valCommande).setParameter("VALFACTURE", valFacture);
+		req.execute();
+	}
+
+	@Override
+	public void mofidificationFactureSave(Integer valFacture) {
+		// TODO Auto-generated method stub
+		StoredProcedureQuery req = em.createStoredProcedureQuery("MODIFFACTURESAVE")
+				.registerStoredProcedureParameter("VALFACTURE", Integer.class, ParameterMode.IN)
+				.setParameter("VALFACTURE", valFacture);
+		req.execute();
+
 	}
 
 }

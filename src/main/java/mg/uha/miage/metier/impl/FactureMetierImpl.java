@@ -47,4 +47,17 @@ public class FactureMetierImpl implements FactureMetierInterf {
 		return factureDAO.getFactureId(idF);
 	}
 
+	@Override
+	public void modificationAchatFacture(Integer valCommande, Integer valFacture) {
+		// TODO Auto-generated method stub
+		factureDAO.modificationAchatFacture(valCommande, valFacture);
+	}
+
+	@Override
+	public void mofidificationFactureSave(Integer valFacture) {
+		// TODO Auto-generated method stub
+		factureDAO.mofidificationFactureSave(valFacture);
+
+	}
+
 }

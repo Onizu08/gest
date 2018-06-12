@@ -15,4 +15,6 @@ public interface PaysMetierInterf {
 	public List<Pays> listPays();
 
 	public Pays getPays(String idP);
+
+	
 }

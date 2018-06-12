@@ -77,13 +77,15 @@ public class FactureController {
 		if (fac.getFactureId() != null) {
 			factureMetierInterf.updateFacture(fac);
 		} else {
-			if (fac.getDateEcheance() == null || fac.getDateFacture() == null || fac.getFraisFacture() == null
-					|| fac.getMontantFacture() == null || fac.getNbrPaiement() == null || fac.getNbrValidite() == null
-					|| fac.getStatut() == "" || fac.getTypeFacture() == "") {
-				model.addAttribute("error", "Veuiller remplir les champs");
-			} else {
-				factureMetierInterf.addFacture(fac);
-			}
+			// if (fac.getDateEcheance() == null || fac.getDateFacture() == null ||
+			// fac.getFraisFacture() == null
+			// || fac.getMontantFacture() == null || fac.getNbrPaiement() == null ||
+			// fac.getNbrValidite() == null
+			// || fac.getStatut() == "" || fac.getTypeFacture() == "") {
+			// model.addAttribute("error", "Veuiller remplir les champs");
+			// } else {
+			factureMetierInterf.addFacture(fac);
+			// }
 		}
 		model.addAttribute("facture", new Facture());
 		model.addAttribute("facturelist", factureMetierInterf.listFacture());

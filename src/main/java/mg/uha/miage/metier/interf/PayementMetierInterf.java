@@ -14,4 +14,7 @@ public interface PayementMetierInterf {
 	public List<Payer> listPayement();
 
 	public Payer getPayement(Integer idP);
+
+	public void insertioPayement(Integer valFacture, Integer valClient);
+
 }

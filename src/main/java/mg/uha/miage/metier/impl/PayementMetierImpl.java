@@ -47,4 +47,10 @@ public class PayementMetierImpl implements PayementMetierInterf {
 		return payerDAO.getPayement(idP);
 	}
 
+	@Override
+	public void insertioPayement(Integer valFacture, Integer valClient) {
+		// TODO Auto-generated method stub
+		payerDAO.insertioPayement(valFacture, valClient);
+	}
+
 }

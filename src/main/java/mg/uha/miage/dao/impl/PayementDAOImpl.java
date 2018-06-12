@@ -3,8 +3,10 @@ package mg.uha.miage.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +50,17 @@ public class PayementDAOImpl implements PayementDAOInterf {
 	public Payer getPayement(Integer idP) {
 		// TODO Auto-generated method stub
 		return em.find(Payer.class, idP);
+	}
+
+	@Override
+	public void insertioPayement(Integer valFacture, Integer valClient) {
+		// TODO Auto-generated method stub
+
+		StoredProcedureQuery req = em.createStoredProcedureQuery("INSERTIONPAIEMENT")
+				.registerStoredProcedureParameter("VALFACTURE", Integer.class, ParameterMode.IN)
+				.registerStoredProcedureParameter("VALCLIENT", Integer.class, ParameterMode.IN)
+				.setParameter("VALFACTURE", valFacture).setParameter("VALCLIENT", valClient);
+		req.execute();
 	}
 
 }

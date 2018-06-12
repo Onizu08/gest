@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,6 +26,7 @@ public class Facture {
 
 	@Id
 	@Column(name = "factureid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer factureId;
 
 	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
@@ -32,12 +35,12 @@ public class Facture {
 	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
 	private List<Achat> listAchat = new ArrayList<Achat>();
 
-	@OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
-	private List<Facture> listFacture = new ArrayList<Facture>();
+	// @OneToMany(mappedBy = "facture", fetch = FetchType.LAZY)
+	// private List<Facture> listFacture = new ArrayList<Facture>();
 
-	@ManyToOne
-	@JoinColumn(name = "factureIdAnnule")
-	private Facture facture;
+	// @ManyToOne
+	// @JoinColumn(name = "factureIdAnnule")
+	// private Facture facture;
 
 	@ManyToOne
 	@JoinColumn(name = "utilisateurId")
@@ -133,21 +136,21 @@ public class Facture {
 		return listAchat;
 	}
 
-	public List<Facture> getListFacture() {
-		return listFacture;
-	}
+	// public List<Facture> getListFacture() {
+	// return listFacture;
+	// }
+	//
+	// public void setListFacture(List<Facture> listFacture) {
+	// this.listFacture = listFacture;
+	// }
 
-	public void setListFacture(List<Facture> listFacture) {
-		this.listFacture = listFacture;
-	}
-
-	public Facture getFacture() {
-		return facture;
-	}
-
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-	}
+	// public Facture getFacture() {
+	// return facture;
+	// }
+	//
+	// public void setFacture(Facture facture) {
+	// this.facture = facture;
+	// }
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
@@ -259,7 +262,7 @@ public class Facture {
 
 	public Facture(Date dateFacture, String typeFacture, Float montantFacture, String statut, Date dateEcheance,
 			Integer nbrPaiement, Float fraisFacture, Integer nbrValidite, Float remise, String setDateFacture,
-			String setDateEcheance) {
+			String setDateEcheance, Integer numCommande) {
 		super();
 		this.dateFacture = dateFacture;
 		this.typeFacture = typeFacture;
@@ -272,6 +275,7 @@ public class Facture {
 		this.remise = remise;
 		this.setDateFacture = setDateFacture;
 		this.setDateEcheance = setDateEcheance;
+		this.numCommande = numCommande;
 	}
 
 }

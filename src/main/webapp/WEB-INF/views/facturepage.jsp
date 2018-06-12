@@ -103,6 +103,7 @@
 						<thead>
 							<tr>
 								<th>ID Facture</th>
+								<th>Numéro du client</th>
 								<th>Date de la facture</th>
 								<th>Type facture</th>
 								<th>Montant facture</th>
@@ -117,14 +118,15 @@
 						<c:forEach items="${facturelist}" var="facturelist">
 							<tr>
 								<td>${facturelist.factureId}</td>
+								<td>${facturelist.client.clientId}</td>
 								<td>${facturelist.dateFacture}</td>
 								<td>${facturelist.typeFacture}</td>
-								<td>${facturelist.telephoneSociete}</td>
-								<td>${facturelist.fax}</td>
-								<td>${facturelist.siret}</td>
-								<td>${facturelist.capital}</td>
-								<td>${facturelist.numTva}</td>
-								<td>${facturelist.naf}</td>
+								<td>${facturelist.montantFacture}</td>
+								<td>${facturelist.statut}</td>
+								<td>${facturelist.dateEcheance}</td>
+								<td>${facturelist.nbrPaiement}</td>
+								<td>${facturelist.fraisFacture}</td>
+								<td>${facturelist.nbrValidite}</td>
 								<td><a
 									href="editFacture?factureId=${facturelist.factureId}">Modification</a>
 									<a href="deleteFacture?factureId=${societelist.factureId}">Supprimer</a></td>

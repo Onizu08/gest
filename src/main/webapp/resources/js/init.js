@@ -169,7 +169,7 @@ function valPrix() {
 		 jq.post("/miage/FactureDroit/index/", {
 			 clientIdComm : value
 		 }, function(data) {
-			 let select = "<select path=\"numCommande\" style=\"display:block\">";
+			 let select = "<select path=\"numCommande\" style=\"display:block\" name=\"numCommande\" placeholder=\"commande\"  >";
 			 select = select + "<option>Selectionner une numero commande</option>";
 			 data.forEach(element => {
 				 select=select+"<option value=\""+value+"\">";
@@ -177,12 +177,18 @@ function valPrix() {
 				 select=select+"</option>";
 			 });
 			 select=select+"</select>";
+			 
 			 jq("#containerCommande").children().replaceWith(select);
 		 });
 	 });
  }
 // fin statut
 
+ // afficahge montant
+ function valMontant(){
+	 var jq = jQuery.noConflict();
+ }
+ 
 $(document).ready(function() {
 	$('.typeClientCoordonnees').hide();
 	$('#clientParticulier').show();

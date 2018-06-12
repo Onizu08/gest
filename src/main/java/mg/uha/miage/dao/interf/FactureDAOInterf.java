@@ -16,4 +16,8 @@ public interface FactureDAOInterf {
 
 	public Facture getFactureId(Integer idF);
 
+	public void modificationAchatFacture(Integer valCommande, Integer valFacture);
+
+	public void mofidificationFactureSave(Integer valFacture);
+
 }
