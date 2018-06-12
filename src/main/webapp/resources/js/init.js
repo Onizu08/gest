@@ -184,6 +184,22 @@ function valPrix() {
  }
 // fin statut
 
+ //
+ function valAffichageNom{
+	 var jq = jQuery.noConflict();
+		var obj = document.getElementById("nomClient");
+		var value = obj.options[obj.selectedIndex].value;
+		jq(function() {
+			jq.post("/miage/RecherchePayement/index/", {
+				clientId : value
+			}, function(data) {
+				jq("#prenom").replaceWith('<span id="prenom">' + data + '</span>');
+			});
+		});
+ }
+ 
+ //
+ 
  // afficahge montant
  function valMontant(){
 	 var jq = jQuery.noConflict();

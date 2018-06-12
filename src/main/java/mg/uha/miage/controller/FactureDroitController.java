@@ -23,7 +23,6 @@ import mg.uha.miage.entities.Achat;
 import mg.uha.miage.entities.Client;
 import mg.uha.miage.entities.Facture;
 import mg.uha.miage.metier.interf.ClientMetierInterf;
-import mg.uha.miage.metier.interf.CommandeMetierInterf;
 import mg.uha.miage.metier.interf.DeviseMetierInterf;
 import mg.uha.miage.metier.interf.FactureMetierInterf;
 import mg.uha.miage.metier.interf.PayementMetierInterf;

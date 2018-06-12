@@ -120,6 +120,8 @@
 		<s:intercept-url pattern="/Achat/**" access="ROLE_ADMIN" />
 		<s:intercept-url pattern="/FactureDroit/**" access="ROLE_ADMIN" />
 		<s:intercept-url pattern="/Facture/**" access="ROLE_ADMIN" />
+		<s:intercept-url pattern="RecherchePayement/**"
+			access="ROLE_SIMPLE" />
 		<s:intercept-url pattern="/Commande/**" access="ROLE_ADMIN" />
 		<s:form-login login-page="/login" default-target-url="/"
 			authentication-failure-url="/login" />
