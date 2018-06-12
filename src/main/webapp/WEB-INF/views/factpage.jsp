@@ -27,12 +27,9 @@
 															<div class="tri-action">
 																<div class="col s12 m12 l3">
 																	<i class="material-icons left">open_in_new</i> <a
-																		href="<%=request.getContextPath()%>/FormationInterne/index">Ouvrir</a>
+																		href="<%=request.getContextPath()%>/Facture/facture/factureDroit/index">Ouvrir</a>
 																</div>
-																<div class="col s12  m12 l3 offset-l2">
-																	<i class="material-icons left">library_books</i><a
-																		href="<%=request.getContextPath()%>/EncadrementFormationInterne/index">DEMANDER</a>
-																</div>
+
 															</div>
 														</div>
 													</div>
@@ -62,11 +59,7 @@
 															<div class="tri-action">
 																<div class="col s12 m12 l3">
 																	<i class="material-icons left">open_in_new</i> <a
-																		href="<%=request.getContextPath()%>/FormationExterne/index">Ouvrir</a>
-																</div>
-																<div class="col s12 m12 l3">
-																	<i class="material-icons left">library_books</i> <a
-																		href="<%=request.getContextPath()%>/AyantSuivit/index">Demander</a>
+																		href="<%=request.getContextPath()%>/Facture/facture/factureAvoir/index">Ouvrir</a>
 																</div>
 															</div>
 														</div>

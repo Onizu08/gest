@@ -7,25 +7,26 @@
 	<div class="col s12 l12">
 		<div class="row">
 			<f:form class="col s12 m8 l5 offset-l4 white"
-				modelAttribute="facture" action="saveFacture" method="post">
+				modelAttribute="facturedroit" action="saveFacture" method="post">
 				<legend>
-					<h4>Information Facture</h4>
+					<h4>Information Facture de Droit</h4>
 				</legend>
 				<div class="input_fields_wrap">
 					<div class="row" id="1">
-						<f:input path="factureId" type="text" class="validate"
-							style="visibility:hidden" />
+						<f:input path="factureId" type="text" class="validate" />
 						<div class="input-field col s12 m8 l5">
 							<f:select path="client.clientId" id="clientIdComm">
 								<f:option value="">Selectionner</f:option>
 								<f:options items="${clientlist}" itemValue="clientId"
 									itemLabel="clientNom" />
+
 							</f:select>
 							<label for="clientId">Client Id</label>
 						</div>
-						<div class="input-field col s12 m8 l5">
-							<f:input path="numCommande" type="text" class="validate"
+						<div class="input-field col s12 m8 l5" id="containerCommande">
+							<f:select path="numCommande" type="text" class="validate"
 								name="commande" placeholder="commande" id="commande" />
+
 						</div>
 						<div class="input-field col s12 m8 l5">
 							<f:select path="devise.deviseId" items="${deviselist}"

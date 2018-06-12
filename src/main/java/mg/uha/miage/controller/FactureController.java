@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import mg.uha.miage.entities.Client;
 import mg.uha.miage.entities.Facture;
 import mg.uha.miage.metier.interf.ClientMetierInterf;
-import mg.uha.miage.metier.interf.CommandeMetierInterf;
 import mg.uha.miage.metier.interf.DeviseMetierInterf;
 import mg.uha.miage.metier.interf.FactureMetierInterf;
 import mg.uha.miage.metier.interf.UtilisateurMetierInterf;
@@ -31,7 +30,7 @@ import mg.uha.miage.metier.interf.UtilisateurMetierInterf;
 @RequestMapping(value = "/Facture")
 @Transactional
 public class FactureController {
-	MakaUtilisateur maka = new MakaUtilisateur();
+	MakaUtilisateur utilisateur = new MakaUtilisateur();
 
 	@PersistenceContext
 	private EntityManager em;
@@ -116,12 +115,17 @@ public class FactureController {
 		return "facturepage";
 	}
 
-	@RequestMapping(value = "/facture/factureDroit/index")
-	public String factureDoroit(Model model, HttpServletRequest httpServletRequest) {
+	// facture droit avoaka liste client sy listeze commande statut tsy valide zay
+	// vao atao anaty facture
 
+	// facture d avoir
+
+	@RequestMapping(value = "/facture/factureAvoir/index")
+	public String factureAvoir(Model model, HttpServletRequest httpServletRequest) {
 		return "factureavoir";
 	}
 
+	// maka commande à partir client et statut
 	public Integer numCommande(Integer idClien, String statu) {
 		Query req = em
 				.createNativeQuery(
@@ -135,18 +139,11 @@ public class FactureController {
 
 		Query req = em.createQuery("select c.clientNom from Client c where c.clientId = :vidCli").setParameter("vidCli",
 				vidCli);
-		// String val = (String) req.getSingleResult();
-		// Query req = em.createQuery("select C.nom FROM Client C WHERE
-		// C.clientId =
-		// :idcli").setParameter("idcli",
-		// vidCli);
-		// List<Client> values = req.getResultList();
-		// return values;
-		// return req.getResultList();
+
 		List<Client> list = new ArrayList<Client>();
 		Client client1 = new Client(), client2 = new Client();
 		client1.setClientNom("Willy");
-		client2.setClientNom("mihary");
+		client2.setClientNom("test");
 		list.add(client1);
 		list.add(client2);
 		return list;

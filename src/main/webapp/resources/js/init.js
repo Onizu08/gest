@@ -95,39 +95,92 @@ function valPrix() {
 // fin prix
 
 // affichage statut
-
-function valStatut() {
-	var jq = jQuery.noConflict();
-	var obj = document.getElementById("clientIdComm");
-	var value = obj.options[obj.selectedIndex].value;
-	console.log("*******"+value);
-	jq(function() {
-		jq.post("/miage/Facture/index/", {
-			clientIdComm : value
-		}, function(data) {
-			let select = "<select path=\"numCommande\" style=\"display:block\">";
-			select = select + "<option>Sélectionner un client</option>";
-			data.filter(value => {
-				return value.clientNom == "Willy";
-
-			}).forEach(value => {
-				select=select+"<option value=\""+value.cliendId+"\">";
-				select=select+value.clientNom;
-				select=select+"</option>";
-				
-			});
-			/*data.forEach(value => {
-				select=select+"<option value=\""+value.cliendId+"\">";
-				select=select+value.clientNom;
-				select=select+"</option>";
-				
-			});*/
-				select=select+"</select>";
-			jq("#commande").replaceWith(
-					select);
-		});
-	});
-}
+// //
+// function valStatut() {
+// var jq = jQuery.noConflict();
+// var obj = document.getElementById("clientIdComm");
+// var value = obj.options[obj.selectedIndex].value;
+// console.log("*******"+value);
+// jq(function() {
+// jq.post("/miage/Facture/index/", {
+// clientIdComm : value
+// }, function(data) {
+// let select = "<select path=\"numCommande\" style=\"display:block\">";
+// select = select + "<option>Sélectionner un client</option>";
+// data.filter(value => {
+// return value.clientNom == "Willy";
+//
+// }).forEach(value => {
+// select=select+"<option value=\""+value.cliendId+"\">";
+// select=select+value.clientNom;
+// select=select+"</option>";
+//				
+// });
+// /*
+// * data.forEach(value => { select=select+"<option
+// * value=\""+value.cliendId+"\">"; select=select+value.clientNom;
+// * select=select+"</option>";
+// *
+// * });
+// */
+// select=select+"</select>";
+// jq("#commande").replaceWith(
+// select);
+// });
+// });
+// }
+// //
+// function valStatut() {
+// var jq = jQuery.noConflict();
+// var obj = document.getElementById("clientIdComm");
+// var value = obj.options[obj.selectedIndex].value;
+// console.log("*******"+value);
+// jq(function() {
+// jq.post("/miage/Facture/index/", {
+// clientIdComm : value
+// }, function(data) {
+// let select = "<select path=\"numCommande\" style=\"display:block\">";
+// select = select + "<option>Sélectionner un client</option>";
+// data.forEach(value => {
+// select=select+"<option value=\""+value.cliendId+"\">";
+// select=select+value.clientNom;
+// select=select+"</option>";
+//				 
+// });
+// /*
+// * data.forEach(value => { select=select+"<option
+// * value=\""+value.cliendId+"\">";
+// * select=select+value.clientNom; select=select+"</option>";
+// *
+// * });
+// */
+// select=select+"</select>";
+// jq("#commande").replaceWith(
+// select);
+// });
+// });
+// }
+// 
+ function valStatutCommande() {
+	 var jq = jQuery.noConflict();
+	 var obj = document.getElementById("clientIdComm");
+	 var value = obj.options[obj.selectedIndex].value;console.log("*******"+value);
+	 jq(function() {
+		 jq.post("/miage/FactureDroit/index/", {
+			 clientIdComm : value
+		 }, function(data) {
+			 let select = "<select path=\"numCommande\" style=\"display:block\">";
+			 select = select + "<option>Selectionner une numero commande</option>";
+			 data.forEach(element => {
+				 select=select+"<option value=\""+value+"\">";
+				 select=select+element;
+				 select=select+"</option>";
+			 });
+			 select=select+"</select>";
+			 jq("#containerCommande").children().replaceWith(select);
+		 });
+	 });
+ }
 // fin statut
 
 $(document).ready(function() {
@@ -144,7 +197,7 @@ $(document).ready(function() {
 	// changement prenom commande
 
 	$('#clientIdComm').change(function() {
-		valStatut();
+		valStatutCommande() ;
 	})
 	$('#articleId').change(function() {
 		valPrix();
